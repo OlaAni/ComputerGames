@@ -28,11 +28,11 @@ $pupCount = count($products);
                             echo '50';
                         }
                         else
-                        {
-                            echo $game['price'];
+                        {?>
+                           € <?php echo $game['price'];
                         }
                         ?>
-                        <?php echo $game['genre']; ?> lbs
+                        <?php echo $game['genre']; ?>
                     </blockquote>
 
                     <p>
