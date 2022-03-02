@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title>AirPupNMeow.com: All the love, none of the crap!</title>
+    <title>ComputerGames</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
@@ -51,7 +51,8 @@
                 <div class="form-group">
                     <input type="password" placeholder="Password" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
+                <button type="submit" class="btn btn-success">Log in</button>
+
             </form>
         </div>
         <!--/.navbar-collapse -->

@@ -1,17 +1,18 @@
 <?php
 require 'lib/functions.php';
 
-$id = $_GET['gameID'];
+$id = $_GET['id'];
 $product = get_product($id);
+//var_dump($product);
 ?>
-<?php require 'layout/header.php'; ?>
+<?php require 'templates/header.php'; ?>
 
 <h1><?php echo $product['name']; ?></h1>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-3 pet-list-item">
-            <img src="/images/<?php echo $product['name'] ?>" class="pull-left img-rounded" />
+            <img src="/images/<?php echo $product['image'] ?>" class="pull-left img-rounded" />
         </div>
         <div class="col-xs-6">
             <p>
@@ -30,7 +31,7 @@ $product = get_product($id);
                 </tr>
                 <tr>
                     <th>Price</th>
-                    <td><?php echo $product['price']; ?></td>
+                    <td>€<?php echo $product['price']; ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -39,4 +40,4 @@ $product = get_product($id);
 </div>
 
 
-<?php require 'layout/footer.php'; ?>
+<?php require 'templates/footer.php'; ?>

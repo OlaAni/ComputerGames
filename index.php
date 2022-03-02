@@ -4,17 +4,16 @@ require 'lib/functions.php';
 
 $products = get_products(3);
 $products = array_reverse($products);
-$pupCount = count($products);
 ?>
 
-<?php require 'layout/header.php';  ?>
+<?php require 'templates/header.php';  ?>
 
 <div class="container">
         <div class="row">
             <?php foreach ($products as $game) { ?>
                 <div class="col-lg-4 pet-list-item">
                     <h2>
-                        <a href="show.php?id=<?php echo $game['gameID']?>">
+                        <a href="show.php?id=<?php echo $game['id']?>">
                             <?php echo $game['name']; ?></a>
                     </h2>
 
@@ -41,4 +40,4 @@ $pupCount = count($products);
                 </div>
             <?php } ?>
 
-<?php require 'layout/footer.php';?>
+<?php require 'templates/footer.php';?>
