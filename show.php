@@ -39,5 +39,8 @@ $product = get_product($id);
     </div>
 </div>
 
+<button type="submit" class="btn btn-success">Buy</button>
+
+
 
 <?php require 'templates/footer.php'; ?>
