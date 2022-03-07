@@ -40,3 +40,24 @@ function get_product($id)
 
     return $stmt->fetch();
 }
+
+function set_user()
+{
+    $pdo = get_connections();
+    if (isset($_POST['submit'])) {
+        try {
+            $new_user = array(
+                "firstname" => $_POST['firstname'],
+                "email" => $_POST['email'],
+                "age" => $_POST['age'],
+            );
+            $sql = "INSERT INTO users (" . implode(', ', array_keys($new_user)) .")
+            values (:". implode(', :', array_keys($new_user)).")";
+
+            $statement = $pdo->prepare($sql);
+            $statement->execute($new_user);
+        } catch(PDOException $error) {
+            echo $sql . "<br>" . $error->getMessage();
+        }
+    }
+}

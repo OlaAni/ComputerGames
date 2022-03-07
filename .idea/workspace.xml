@@ -22,7 +22,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Airpup" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -45,6 +45,8 @@
       <workItem from="1645787062408" duration="4715000" />
       <workItem from="1646039185588" duration="1920000" />
       <workItem from="1646215738753" duration="3091000" />
+      <workItem from="1646392259131" duration="1904000" />
+      <workItem from="1646644291244" duration="3201000" />
     </task>
     <servers />
   </component>
