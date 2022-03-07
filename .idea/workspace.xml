@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="18488727-e397-4e50-b1df-8a0d2a211deb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +26,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< Updated upstream
+=======
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+>>>>>>> Stashed changes
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -45,8 +55,14 @@
       <workItem from="1645787062408" duration="4715000" />
       <workItem from="1646039185588" duration="1920000" />
       <workItem from="1646215738753" duration="3091000" />
+<<<<<<< Updated upstream
       <workItem from="1646392259131" duration="1904000" />
       <workItem from="1646644291244" duration="3805000" />
+=======
+      <workItem from="1646646285259" duration="17000" />
+      <workItem from="1646646309964" duration="1433000" />
+      <workItem from="1646648591687" duration="130000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
