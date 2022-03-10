@@ -2,6 +2,7 @@
 class Customer extends User
 {
     public String $favGenre;
+    private int $id;
     public int $age;
 
     function Update():void
