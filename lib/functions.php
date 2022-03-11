@@ -47,11 +47,11 @@ function set_user()
     if (isset($_POST['submit'])) {
         try {
             $new_user = array(
-                "firstname" => $_POST['firstname'],
+                "name" => $_POST['name'],
                 "email" => $_POST['email'],
-                "age" => $_POST['age'],
+                "password" => $_POST['password'],
             );
-            $sql = "INSERT INTO users (" . implode(', ', array_keys($new_user)) .")
+            $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
             values (:". implode(', :', array_keys($new_user)).")";
 
             $statement = $pdo->prepare($sql);
@@ -60,4 +60,21 @@ function set_user()
             echo $sql . "<br>" . $error->getMessage();
         }
     }
+}
+
+function setTestUser()
+{
+    $pdo = get_connections();
+
+}
+
+function get_user($id)
+{
+    $pdo = get_connections();
+    $query = 'SELECT * FROM user WHERE userID = :idVal';
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam('idVal',$id);
+    $stmt->execute();
+
+    return $stmt->fetch();
 }

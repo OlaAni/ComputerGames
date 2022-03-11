@@ -13,6 +13,7 @@ class Cart
 
     public function setFullPrice(string $fullPrice): void
     {
+        $this->calcFullPrice();
         $this->fullPrice = $fullPrice;
     }
 
@@ -24,6 +25,14 @@ class Cart
         }
 
         return $this->fullPrice;
+    }
+
+    /**
+     * @param array $products
+     */
+    public function setProducts(array $products): void
+    {
+        $this->products = $products;
     }
 
     public function getCarName():void

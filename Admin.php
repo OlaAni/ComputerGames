@@ -5,9 +5,10 @@ class  Admin extends User
     private int $id;
     private Product $product;
 
-    public function __construct()
+    public function __construct($name, $email, $password)
     {
-
+        parent::__construct($name, $email, $password);
+        $this->setEmployee(true);
     }
 
     function editProduct():void
