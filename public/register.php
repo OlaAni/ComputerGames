@@ -4,10 +4,12 @@
 require '../lib/functions.php';
 
 ?>
+<?php include "templates/header.php"; ?>
+
 
 <?php if (isset($_POST['submit'])) { ?>
     <?php echo $_POST['name']; ?> successfully added.
-    <?php     set_user(); ?>
+    <?php set_user(); ?>
 
 <?php } ?>
     <h2>Register</h2>
@@ -16,7 +18,7 @@ require '../lib/functions.php';
         <input type="text" name="name" id="name">
         <label for="email">Email Address</label>
         <input type="text" name="email" id="email">
-        <label for="password">Passw</label>
+        <label for="password">Password</label>
         <input type="text" name="password" id="password">
         <input type="submit" name="submit" value="Submit">
     </form>

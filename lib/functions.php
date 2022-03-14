@@ -68,6 +68,20 @@ function setTestUser()
 
 }
 
+function checkCred($email,$password)
+{
+    $pdo = get_connections();
+    $query = 'SELECT * FROM user WHERE email = :emailVal AND password = :passwordVal';
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam('emailVal', $email);
+
+    $stmt->bindParam('passwordVal', $password);
+
+    $stmt->execute();
+
+    return $stmt->fetch();
+}
+
 function get_user($id)
 {
     $pdo = get_connections();
@@ -78,3 +92,4 @@ function get_user($id)
 
     return $stmt->fetch();
 }
+

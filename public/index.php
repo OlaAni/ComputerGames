@@ -1,6 +1,6 @@
 <?php
 
-require 'lib/functions.php';
+require '../lib/functions.php';
 
 $products = get_products(3);
 $products = array_reverse($products);

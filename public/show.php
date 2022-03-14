@@ -1,5 +1,5 @@
 <?php
-require 'lib/functions.php';
+require '../lib/functions.php';
 
 $id = $_GET['id'];
 $product = get_product($id);
