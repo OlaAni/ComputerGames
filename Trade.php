@@ -1,7 +1,7 @@
 <?php
 class Trade
 {
-    private double $discount;
+    private float $discount;
 
     /**
      * @return float
@@ -19,21 +19,28 @@ class Trade
         $this->discount = $discount;
     }
 
-    public function CheckProduct():void
+
+    public function calDiscount($rarity):void
     {
+        if (strcmp($rarity, "Common") == 0)
+        {
+            $this->setDiscount(0.01);
+        }
+        elseif(strcmp($rarity, "Very") == 0)
+        {
+            $this->setDiscount(0.5);
+        }
+        else
+        {
+            $this->setDiscount(0);
+        }
 
     }
 
-    public function calDiscount($rarity):double
+
+
+    public function CheckProduct():void
     {
-        if($rarity = "Very")
-        {
-            return 0.10;
-        }
-        elseif ($rarity = "Common")
-        {
-            return 0.01;
-        }
 
     }
 }

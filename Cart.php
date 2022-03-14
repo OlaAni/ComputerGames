@@ -1,20 +1,30 @@
 <?php
-require "Product.php";
 class Cart
 {
-    private float $fullPrice;
+    private float $fullPrice = 0;
     private $products = array();
-    private  $arr = array();
+    protected Trade $trade;
 
-    public function getFullPrice(): string
+    /**
+     * @param Trade $trade
+     */
+    public function setTrade(Trade $trade): void
     {
-        return $this->fullPrice;
+        $this->trade = $trade;
     }
 
-    public function setFullPrice(string $fullPrice): void
+    public function setNewPrice(float $fullPrice): void
     {
-        $this->calcFullPrice();
-        $this->fullPrice = $fullPrice;
+        $discount = $fullPrice * $this->trade->getDiscount();
+        $discountPrice = $fullPrice - $discount;
+        $this->fullPrice = $discountPrice;
+    }
+
+
+
+    public function getFullPrice(): float
+    {
+        return $this->fullPrice;
     }
 
     public function calcFullPrice():float
@@ -35,11 +45,18 @@ class Cart
         $this->products = $products;
     }
 
-    public function getCarName():void
+    public function setProductNames():void
     {
+        $arr = array();
+
         foreach ($this->products as $product)
         {
             array_push($arr,$product->getName());
+        }
+
+        foreach ($arr as $ar)
+        {
+            echo $ar;
         }
     }
 
