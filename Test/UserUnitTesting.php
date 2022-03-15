@@ -1,8 +1,6 @@
 <?php
-require_once "../User.php";
-require_once "../Customer.php";
-require_once "../Admin.php";
-require_once "../lib/functions.php";
+require_once "autoload.php";
+
 
 
 $customer = new Customer("Ola","ola@gmail.com","password",18);

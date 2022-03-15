@@ -6,7 +6,7 @@ $products = get_products(3);
 $products = array_reverse($products);
 ?>
 
-<?php require 'templates/header.php';  ?>
+<?php require 'templates/headerlogged.php';  ?>
 
 <div class="container">
         <div class="row">

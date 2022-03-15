@@ -2,7 +2,7 @@
 class Customer extends User
 {
     private String $favGenre;
-    //private int $id;
+    private int $id;
     private int $age;
 
     public function __construct($name, $email, $password,$age)

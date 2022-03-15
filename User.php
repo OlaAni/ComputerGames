@@ -5,6 +5,7 @@ abstract class User
     private String $email;
     private String $password;
     private bool $employee = false;
+    private int $id;
 
 
     public function __construct($name,$email,$password)
@@ -82,11 +83,11 @@ abstract class User
     {
         if($this->employee)
         {
-            echo $this->getName() ." employee status is true";
+            echo $this->getName() ." employee status is true</br>";
         }
         else
         {
-            echo $this->getName() ." employee status is false";
+            echo $this->getName() ." employee status is false</br>";
 
         }
 

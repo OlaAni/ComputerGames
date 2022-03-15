@@ -5,7 +5,7 @@ $id = $_GET['id'];
 $product = get_product($id);
 //var_dump($product);
 ?>
-<?php require 'templates/header.php'; ?>
+<?php require 'templates/headerlogged.php'; ?>
 
 <h1><?php echo $product['name']; ?></h1>
 

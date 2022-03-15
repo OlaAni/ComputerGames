@@ -82,6 +82,7 @@ function checkCred($email,$password)
     return $stmt->fetch();
 }
 
+
 function get_user($id)
 {
     $pdo = get_connections();

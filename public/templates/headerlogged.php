@@ -44,34 +44,8 @@
                 <li><a href="#contact">Contact</a></li>
 
             </ul>
-                <form class="navbar-form navbar-right" method="post">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" name="email" class="form-control" id="email"  required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password"  name="password" class="form-control" id="password" required>
-                </div>
-                <button type="submit"  class="btn btn-success">Log in</button>
-                    <input type="submit" name="submit" value="Submit">
 
-            </form>
         </div>
         <!--/.navbar-collapse -->
     </div>
 </div>
-
-<?php
-if (isset($_POST['submit'])) {
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    //echo $email, $password;
-    $user1 = checkCred($email,$password);
-    var_dump($user1);
-
-    if(!is_null($user1))
-    {
-
-    }
-}
-?>

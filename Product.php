@@ -3,11 +3,29 @@ class Product
 {
     private string $name;
     private float $price;
+    private RarityType $rarity;
+    private int $id;
 
     public function __construct($name,$price)
     {
         $this->name = $name;
         $this->price = $price;
+    }
+
+    /**
+     * @param RarityType $rarity
+     */
+    public function setRarity(RarityType $rarity): void
+    {
+        $this->rarity = $rarity;
+    }
+
+    /**
+     * @return RarityType
+     */
+    public function getRarity(): RarityType
+    {
+        return $this->rarity;
     }
 
     public function getName(): string
@@ -32,7 +50,7 @@ class Product
 
     public function showDetails(): void
     {
-        echo "Game name is ".$this->getName()." is €".$this->price;
+        echo "Product name is ".$this->getName()." is €".$this->price."</br>";
     }
 
 

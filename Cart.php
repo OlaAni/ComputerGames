@@ -47,6 +47,8 @@ class Cart
 
     public function setProductNames():void
     {
+        $i = 0;
+
         $arr = array();
 
         foreach ($this->products as $product)
@@ -56,7 +58,8 @@ class Cart
 
         foreach ($arr as $ar)
         {
-            echo $ar;
+            $i++;
+            echo "Product".$i.": ".$ar."</br>";
         }
     }
 
