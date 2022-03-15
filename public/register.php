@@ -19,7 +19,7 @@ require '../lib/functions.php';
         <label for="email">Email Address</label>
         <input type="text" name="email" id="email">
         <label for="password">Password</label>
-        <input type="text" name="password" id="password">
+        <input type="password" name="password" id="password">
         <input type="submit" name="submit" value="Submit">
     </form>
     <a href="index.php">Back to home</a>
