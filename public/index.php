@@ -1,9 +1,12 @@
 <?php
+session_start();
 
 require '../lib/functions.php';
 
 $products = get_products(3);
 $products = array_reverse($products);
+
+var_dump($_SESSION['email']);
 ?>
 
 <?php require 'templates/headerlogged.php';  ?>

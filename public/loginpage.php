@@ -1,4 +1,30 @@
+<?php
 
+require_once "../lib/functions.php";
+if (isset($_POST['submit'])) {
+    session_start();
+
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['password'] = $_POST['password'];
+    $user1 = checkCred($email, $password);
+    //var_dump($user1);
+    //var_dump($_SESSION);
+
+
+    if ($user1) {
+        header("Location: index.php");
+    }
+
+
+
+}
+
+
+?>
 <h2>Login to your Account:</h2>
 <form method="post">
     <label for="email">Email Address</label>
