@@ -37,7 +37,7 @@
         </div>
         <!--/.navbar-collapse -->
     </div>
-</div>
+</body>
 
 <?php
 require_once "../lib/functions.php";

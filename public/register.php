@@ -3,8 +3,9 @@
 
 require '../lib/functions.php';
 
+
 ?>
-<?php include "templates/header.php"; ?>
+<?php include "templates/registerHeader.php"; ?>
 
 
 <?php if (isset($_POST['submit'])) { ?>
@@ -12,7 +13,8 @@ require '../lib/functions.php';
     <?php set_user(); ?>
 
 <?php } ?>
-    <h2>Register</h2>
+
+    <h1>Register your Account:</h1>
     <form method="post">
         <label for="name">First Name</label>
         <input type="text" name="name" id="name">
