@@ -22,7 +22,6 @@
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <h1 id="registerTag">Register your Account:</h1>
+    <h1 id="headerTag">Login to your Account:</h1>
 
 </div>
-

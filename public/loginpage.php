@@ -1,6 +1,10 @@
 <?php
 
 require_once "../lib/functions.php";
+
+include "templates/loginHeader.php";
+
+
 if (isset($_POST['submit'])) {
     session_start();
 
@@ -25,7 +29,7 @@ if (isset($_POST['submit'])) {
 
 
 ?>
-<h2>Login to your Account:</h2>
+
 <form method="post">
     <label for="email">Email Address</label>
     <input type="text" name="email" id="email">

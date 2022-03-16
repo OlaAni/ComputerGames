@@ -14,7 +14,6 @@ require '../lib/functions.php';
 
 <?php } ?>
 
-    <h1>Register your Account:</h1>
     <form method="post">
         <label for="name">First Name</label>
         <input type="text" name="name" id="name">
