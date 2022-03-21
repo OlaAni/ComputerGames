@@ -40,6 +40,9 @@ class Customer extends User
 
     function Register():void
     {
+        //echo $_POST['name'];
+        set_user();
+        header("Location: loginpage.php");
     }
 
     public function showDetails(): void

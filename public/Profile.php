@@ -1,10 +1,10 @@
 <?php
 require '../lib/functions.php';
-$user =get_user(1);
+$user =get_user(6);
 
 ?>
 
-<?php require 'templates/header.php';  ?>
+<?php require 'templates/headerlogged.php';  ?>
 
 <?php echo $user['name']; ?> </br>
 <?php echo $user['email']; ?></br>

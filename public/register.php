@@ -2,15 +2,21 @@
 
 
 require '../lib/functions.php';
+require_once "../Test/autoload.php";
+
 
 
 ?>
 <?php include "templates/registerHeader.php"; ?>
 
 
-<?php if (isset($_POST['submit'])) { ?>
-    <?php echo $_POST['name']; ?> successfully added.
-    <?php set_user(); ?>
+<?php if (isset($_POST['submit'])) {?>
+        <?php $user = new Customer($_POST['name'],$_POST['email'],$_POST['password'],0);
+        $user->Register();
+
+        ?>
+<!--    --><?php //echo $_POST['name']; ?><!-- successfully added.-->
+<!--    --><?php //set_user(); ?>
 
 <?php } ?>
 
