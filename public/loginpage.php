@@ -1,27 +1,28 @@
 <?php
 
 require_once "../lib/functions.php";
+require_once "../Test/autoload.php";
 
 include "templates/loginHeader.php";
 
 
 if (isset($_POST['submit'])) {
     session_start();
-
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $_SESSION['email'] = $_POST['email'];
-    $_SESSION['password'] = $_POST['password'];
-    $user1 = checkCred($email, $password);
-    //var_dump($user1);
-    //var_dump($_SESSION);
-
-
-    if ($user1) {
-        header("Location: index.php");
-    }
+    $user1 = new Customer( "Blank",$_POST['email'], $_POST['password'],0);
+    $user1->Login();
+//    $email = $_POST['email'];
+//    $password = $_POST['password'];
+//
+//    $_SESSION['email'] = $_POST['email'];
+//    $_SESSION['password'] = $_POST['password'];
+//    $user1 = checkCred($email, $password);
+//    //var_dump($user1);
+//    //var_dump($_SESSION);
+//
+//
+//    if ($user1) {
+//        header("Location: index.php");
+//    }
 
 
 
