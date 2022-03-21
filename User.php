@@ -1,4 +1,5 @@
 <?php
+require_once "lib/functions.php";
 abstract class User
 {
     private String $name;
@@ -13,6 +14,17 @@ abstract class User
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+    }
+
+    function getUser($id)
+    {
+        $pdo = get_connections();
+        $query = 'SELECT * FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
     public function getName(): string
@@ -35,17 +47,20 @@ abstract class User
 
     public function setName(string $name): void
     {
-        $this->name = $name;
+        $user = $this->getName();
+        $this->name = $user['name'];
     }
 
     public function setEmail(string $email): void
     {
-        $this->email = $email;
+        $user = $this->getEmail();
+        $this->email = $user['email'];
     }
 
     public function setPassword(string $password): void
     {
-        $this->password = $password;
+        $user = $this->getPassword();
+        $this->password = $user['password'];
     }
 
     /**

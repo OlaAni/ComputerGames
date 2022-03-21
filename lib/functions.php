@@ -13,6 +13,7 @@ function get_connections()
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     return $pdo;
 }
+
 function get_products($limit = null)
 {
     $pdo = get_connections();
