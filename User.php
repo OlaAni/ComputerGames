@@ -1,4 +1,5 @@
 <?php
+require_once "lib/functions.php";
 abstract class User
 {
     private String $name;
@@ -15,37 +16,69 @@ abstract class User
         $this->password = $password;
     }
 
+    function getUser($id)
+    {
+        $pdo = get_connections();
+        $query = 'SELECT * FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
     public function getName(): string
     {
-        return $this->name;
+        $pdo = get_connections();
+        $query = 'SELECT name FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 
     public function getEmail(): string
     {
-        return $this->email;
+        $pdo = get_connections();
+        $query = 'SELECT email FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 
     public function getPassword(): string
     {
-        return $this->password;
+        $pdo = get_connections();
+        $query = 'SELECT password FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 
     public function setName(string $name): void
     {
-        $this->name = $name;
+        $user = $this->getName();
+        $this->name = $user['name'];
     }
 
     public function setEmail(string $email): void
     {
-        $this->email = $email;
+        $user = $this->getEmail();
+        $this->email = $user['email'];
     }
 
     public function setPassword(string $password): void
     {
-        $this->password = $password;
+        $user = $this->getPassword();
+        $this->password = $user['password'];
     }
 
     /**
