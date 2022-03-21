@@ -29,19 +29,37 @@ abstract class User
 
     public function getName(): string
     {
-        return $this->name;
+        $pdo = get_connections();
+        $query = 'SELECT name FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 
     public function getEmail(): string
     {
-        return $this->email;
+        $pdo = get_connections();
+        $query = 'SELECT email FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 
     public function getPassword(): string
     {
-        return $this->password;
+        $pdo = get_connections();
+        $query = 'SELECT password FROM user WHERE userID = :idVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('idVal',$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
 

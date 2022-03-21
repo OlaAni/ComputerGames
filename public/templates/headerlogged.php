@@ -52,12 +52,5 @@ session_start();
 
         </div>
 
-        <!--/.navbar-collapse -->
-        <div class="navbar-form navbar-right" >
-            <?php
-                echo $_SESSION['email']. $_SESSION['password'];
-            ?>
-        </div>
-
     </div>
 </div>
