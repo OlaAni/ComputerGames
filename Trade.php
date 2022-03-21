@@ -20,13 +20,13 @@ class Trade
     }
 
 
-    public function calDiscount(RarityType $rarityType):void
+    public function calDiscount(String $rarityType):void
     {
-        if ($rarityType == RarityType::COMMON)
+        if ($rarityType == 'COMMON')
         {
             $this->setDiscount(0.01);
         }
-        elseif($rarityType ==  RarityType::VERY)
+        elseif($rarityType ==  'VERY')
         {
             $this->setDiscount(0.5);
         }

@@ -17,7 +17,7 @@ class Product
     public function getProduct()
     {
         $pdo = get_connections();
-        $query = 'SELECT * FROM game WHERE id = :idVal';
+        $query = 'SELECT * FROM product WHERE idProduct = :idVal';
         $stmt = $pdo->prepare($query);
         $stmt->bindParam('idVal', $this->id);
         $stmt->execute();
@@ -25,21 +25,6 @@ class Product
         return $stmt->fetch();
     }
 
-    /**
-     * @param RarityType $rarity
-     */
-    public function setRarity(RarityType $rarity): void
-    {
-        $this->rarity = $rarity;
-    }
-
-    /**
-     * @return RarityType
-     */
-    public function getRarity(): RarityType
-    {
-        return $this->rarity;
-    }
 
     /**
      * @return string

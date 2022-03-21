@@ -17,7 +17,7 @@ function get_products($limit = null)
 {
     $pdo = get_connections();
 
-    $query = 'SELECT * FROM game';
+    $query = 'SELECT * FROM product';
     if($limit)
     {
         $query = $query.' LIMIT :resultLimit';
@@ -33,7 +33,7 @@ function get_products($limit = null)
 function get_product($id)
 {
     $pdo = get_connections();
-    $query = 'SELECT * FROM game WHERE id = :idVal';
+    $query = 'SELECT * FROM product WHERE idProduct = :idVal';
     $stmt = $pdo->prepare($query);
     $stmt->bindParam('idVal',$id);
     $stmt->execute();

@@ -1,9 +1,11 @@
 <?php
 require '../lib/functions.php';
+require '../Test/autoload.php';
 
 $id = $_GET['id'];
 $product = get_product($id);
 //var_dump($product);
+
 ?>
 <?php require 'templates/headerlogged.php'; ?>
 

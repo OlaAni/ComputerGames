@@ -4,9 +4,10 @@ class Part extends Product
 {
     public string $PartType;
 
-    public function __construct($name, $price)
+    public function __construct($id, $name, $price,$part)
     {
-        parent::__construct($name, $price);
+        parent::__construct($id, $name, $price);
+        $this->setPartType($part);
     }
 
     public function getPartType(): string
@@ -16,7 +17,8 @@ class Part extends Product
 
     public function setPartType(string $PartType): void
     {
-        $this->PartType = $PartType;
+        $part = $this->getProduct();
+        $this->PartType = $part['part'];
     }
 
 
