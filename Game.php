@@ -4,11 +4,11 @@ class Game extends Product
 {
     public string $genre;
 
-    public function __construct($name, $price,$genre)
-    {
-        parent::__construct($name, $price);
-        $this->genre = $genre;
 
+    public function __construct($id, $name, $price,$genre)
+    {
+        parent::__construct($id, $name, $price);
+        $this->setGenre($genre);
     }
 
     public function getGenre(): string
@@ -18,9 +18,15 @@ class Game extends Product
 
     public function setGenre(string $genre): void
     {
-        $this->genre = $genre;
+        $game = $this->getProduct();
+        $this->genre = $game["genre"];
     }
 
+
+    public function showDetails(): void
+    {
+        parent::showDetails()." Genre is ".$this->genre;
+    }
 
 
 }

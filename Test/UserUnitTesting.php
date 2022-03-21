@@ -17,3 +17,8 @@ $pdo = get_connections();
 
 $admin = new Admin("AdminOla","ola@gmail.com","password");
 $admin->showDetails();
+
+
+//classes finished and erd done
+//read products from product class
+//

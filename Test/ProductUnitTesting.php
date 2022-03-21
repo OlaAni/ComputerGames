@@ -1,15 +1,23 @@
 <?php
 require_once "autoload.php";
 
-$game1 = new Game("DogWatch",50,"Action");
-$game2 = new Game("ATG5",100,"Action");
-$part1 = new Part("CPU",100);
+//$game1 = new Game(0,"DogWatch",50,"Action");
+//$part1 = new Part("CPU",100);
 
-echo $game1->showDetails();
-echo $game2->showDetails();
-echo $part1->showDetails();
+$game4 = new Game(1,"",50," ");
+$game2 = new Game(2,"",100,"Action");
 
 
+//$game1->showDetails();
+//$game2->showDetails();
+//$part1->showDetails();
+
+$game4->showDetails();
+$game2->showDetails();
+
+
+
+/*
 $customer1 = new Customer("Ola","ola@gmail.com","password",18);
 $cart = new Cart();
 $arr = array($game1,$game2,$part1);
@@ -19,7 +27,7 @@ print "Full price is ".$cart->getFullPrice()."</br>";
 
 $trade1 = new Trade();
 $cart->setTrade($trade1);
-$trade1->calDiscount(RarityType::COMMON);
+//$trade1->calDiscount(RarityType::COMMON);
 $cart->setNewPrice($cart->getFullPrice());
 
 echo "</br></br> The discount is ".$trade1->getDiscount(). "</br>Your new price is ".$cart->getFullPrice()."</br>" ;
@@ -29,4 +37,7 @@ echo "</br></br> The discount is ".$trade1->getDiscount(). "</br>Your new price 
 $sale = new Sale();
 $sale->setCustomer($customer1);
 $sale->setCart($cart);
-$sale->showCartDetails();
+$sale->showCartDetails();*/
+
+
+
