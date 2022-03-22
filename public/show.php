@@ -1,6 +1,6 @@
 <?php
-require '../lib/functions.php';
-require '../Test/autoload.php';
+//require '../lib/functions.php';
+require '../Product.php';
 
 $id = $_GET['id'];
 $product = get_product($id);
@@ -14,7 +14,7 @@ $product = get_product($id);
 <div class="container">
     <div class="row">
         <div class="col-xs-3 pet-list-item">
-            <img src="/images/<?php echo $product['image'] ?>" class="pull-left img-rounded" />
+            <img src="../images/<?php echo $product['image'] ?>" class="pull-left img-rounded" />
         </div>
         <div class="col-xs-6">
             <p>

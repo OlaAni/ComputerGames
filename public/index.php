@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require '../lib/functions.php';
-
+//require '../lib/functions.php';
+require '../Product.php';
 $products = get_products(3);
-$products = array_reverse($products);
+//$products = array_reverse($products);
 
 //var_dump($_SESSION['email']);
 ?>
@@ -20,7 +20,7 @@ $products = array_reverse($products);
                             <?php echo $product['name']; ?></a>
                     </h2>
 
-                    <img src="/images/<?php echo $product['image']; ?>" class="img-rounded">
+                    <img src="../images/<?php echo $product['image']; ?>" class="img-rounded">
 
                     <blockquote class="game-details">
                         <span class="label label-info"><?php echo $product['name']; ?></span>

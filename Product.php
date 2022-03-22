@@ -4,14 +4,32 @@ class Product
 {
     private string $name;
     private float $price;
-    private RarityType $rarity;
+    private String $rarity;
     private int $id;
 
-    public function __construct($id,$name,$price)
+    function get_products($limit = null)
+    {
+        $pdo = get_connections();
+
+        $query = 'SELECT * FROM product';
+        if($limit)
+        {
+            $query = $query.' LIMIT :resultLimit';
+        }
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('resultLimit',$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $proudcts = $stmt->fetchAll();
+
+        return $proudcts;
+    }
+
+    public function __construct($id,$name,$price,$rarity)
     {
         $this->setId($id);
         $this->setName($name);
         $this->setPrice($price);
+        $this->setRarity($rarity);
     }
 
     public function getProduct()
@@ -61,6 +79,24 @@ class Product
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getRarity(): string
+    {
+        return $this->rarity;
+    }
+
+    /**
+     * @param String $rarity
+     */
+    public function setRarity(string $rarity): void
+    {
+        $product = $this->getProduct();
+        $this->rarity = $product['rarity'];
+
     }
 
     /**

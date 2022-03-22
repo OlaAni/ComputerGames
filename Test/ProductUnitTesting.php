@@ -1,11 +1,9 @@
 <?php
 require_once "autoload.php";
 
-//$game1 = new Game(0,"DogWatch",50,"Action");
-
-$game4 = new Game(1,"",50," ");
-$game2 = new Game(2,"",100,"Action");
-$part1 = new Part(3," ",0,"");
+$game4 = new Game(1,"",50," "," ");
+$game2 = new Game(2,"",100,"Action","");
+$part1 = new Part(3," ",0,"","");
 
 
 //$game1->showDetails();
@@ -24,7 +22,7 @@ $cart->calcFullPrice();
 print "Full price is ".$cart->getFullPrice()."</br>";
 $trade1 = new Trade();
 $cart->setTrade($trade1);
-$trade1->calDiscount('VERY');
+$trade1->calDiscount($game2->getRarity());
 $cart->setNewPrice($cart->getFullPrice());
 echo "</br></br> The discount is ".$trade1->getDiscount(). "</br>Your new price is ".$cart->getFullPrice()."</br>" ;
 
