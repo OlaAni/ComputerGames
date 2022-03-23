@@ -1,5 +1,5 @@
 <?php
-require '../lib/functions.php';
+require '../src/functions.php';
 $user =get_user(6);
 
 ?>

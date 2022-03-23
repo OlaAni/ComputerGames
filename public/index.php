@@ -1,12 +1,15 @@
 <?php
 session_start();
 
-//require '../lib/functions.php';
+//require '../src/functions.php';
+require '../src/session.php';
 require '../Product.php';
 $products = get_products(3);
 //$products = array_reverse($products);
 
-//var_dump($_SESSION['email']);
+var_dump($_SESSION);
+//killSession();
+print session_id();
 ?>
 
 <?php require 'templates/headerlogged.php';  ?>

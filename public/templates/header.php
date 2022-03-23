@@ -40,7 +40,7 @@
 </body>
 
 <?php
-require_once "../lib/functions.php";
+require_once "../src/functions.php";
 if (isset($_POST['submit'])) {
 
     $email = $_POST['email'];

@@ -1,5 +1,5 @@
 <?php
-//require '../lib/functions.php';
+//require '../src/functions.php';
 require '../Product.php';
 
 $id = $_GET['id'];

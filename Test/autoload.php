@@ -12,4 +12,4 @@ require_once "../Sale.php";
 require_once "../Trade.php";
 
 require_once "../Admin.php";
-require_once "../lib/functions.php";
+require_once "../src/functions.php";

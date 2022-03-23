@@ -1,5 +1,5 @@
 <?php
-require_once "lib/functions.php";
+require_once "src/functions.php";
 class Customer extends User
 {
     private String $favGenre;

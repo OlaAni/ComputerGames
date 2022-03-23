@@ -51,8 +51,9 @@ function set_user()
                 "name" => $_POST['name'],
                 "email" => $_POST['email'],
                 "password" => $_POST['password'],
+                "favgenre" => 'Fill',
             );
-            $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
+            $sql = "INSERT INTO customer (" . implode(', ', array_keys($new_user)) .")
             values (:". implode(', :', array_keys($new_user)).")";
 
             $statement = $pdo->prepare($sql);
@@ -72,7 +73,7 @@ function setTestUser()
 function checkCred($email,$password)
 {
     $pdo = get_connections();
-    $query = 'SELECT * FROM user WHERE email = :emailVal AND password = :passwordVal';
+    $query = 'SELECT * FROM customer WHERE email = :emailVal AND password = :passwordVal';
     $stmt = $pdo->prepare($query);
     $stmt->bindParam('emailVal', $email);
 
@@ -95,3 +96,8 @@ function get_user($id)
     return $stmt->fetch();
 }
 
+
+function set_Session()
+{
+
+}

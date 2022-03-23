@@ -1,15 +1,15 @@
 <?php
 
-require_once "../lib/functions.php";
+require_once "../src/functions.php";
 require_once "../Test/autoload.php";
 
 include "templates/loginHeader.php";
 
 
 if (isset($_POST['submit'])) {
-    session_start();
     $user1 = new Customer( "Blank",$_POST['email'], $_POST['password'],0);
     $user1->Login();
+
 //    $email = $_POST['email'];
 //    $password = $_POST['password'];
 //
