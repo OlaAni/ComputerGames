@@ -5,6 +5,7 @@ class Customer extends User
     private String $favGenre;
     private int $id;
     private int $age;
+    private int $discountAmount;
 
     public function __construct($name, $email, $password,$age)
     {
@@ -44,6 +45,24 @@ class Customer extends User
         //echo $_POST['name'];
         set_user();
         header("Location: loginpage.php");
+    }
+
+
+    /**
+     * @param int $discountAmount
+     */
+    public function setDiscountAmount(int $discountAmount): void
+    {
+        $this->discountAmount = $discountAmount;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getDiscountAmount(): int
+    {
+        return $this->discountAmount;
     }
 
     public function showDetails(): void

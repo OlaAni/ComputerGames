@@ -3,13 +3,26 @@ session_start();
 
 //require '../src/functions.php';
 require '../src/session.php';
-require '../Product.php';
-$products = get_products(3);
-//$products = array_reverse($products);
+require_once '../Product.php';
+require_once '../Game.php';
+require_once '../Part.php';
+$productsin = new Product(1,"",50,"");
+$products = $productsin->get_products(3);
 
-var_dump($_SESSION);
+$game4 = new Game(1,"",50," "," ");
+$game2 = new Game(2,"",100,"Action","");
+$part1 = new Part(3," ",0,"","");
+
+
+$arr = array($game4,$game2,$part1);
+for($i=0; $i<sizeof($arr);$i++)
+{
+   // print $arr[$i]->getName();
+}
+
+//var_dump($_SESSION);
 //killSession();
-print session_id();
+//print session_id();
 ?>
 
 <?php require 'templates/headerlogged.php';  ?>
@@ -17,7 +30,7 @@ print session_id();
 <div class="container">
         <div class="row">
             <?php foreach ($products as $product) { ?>
-                <div class="col-lg-4 pet-list-item">
+    <div class="col-lg-4 pet-list-item">
                     <h2>
                         <a href="show.php?id=<?php echo $product['idProduct']?>">
                             <?php echo $product['name']; ?></a>
@@ -43,7 +56,12 @@ print session_id();
                     <p>
                         <?php echo $product['description']; ?>
                     </p>
-                </div>
+
+        <form action="" method="post" name="Logout_Form" class="form-signin">
+            <button type="submit" class="btn btn-success">Buy</button>
+        </form>
+
+    </div>
             <?php } ?>
 
 <?php require 'templates/footer.php';?>

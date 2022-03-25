@@ -24,6 +24,7 @@ class Product
         return $proudcts;
     }
 
+
     public function __construct($id,$name,$price,$rarity)
     {
         $this->setId($id);
@@ -56,7 +57,7 @@ class Product
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName(): void
     {
         $product = $this->getProduct();
         $this->name = $product['name'];
@@ -67,7 +68,7 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(float $price): void
+    public function setPrice(): void
     {
         $product = $this->getProduct();
         $this->price = $product['price'];
@@ -92,7 +93,7 @@ class Product
     /**
      * @param String $rarity
      */
-    public function setRarity(string $rarity): void
+    public function setRarity(): void
     {
         $product = $this->getProduct();
         $this->rarity = $product['rarity'];
