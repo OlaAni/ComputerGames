@@ -7,7 +7,7 @@ class Game extends Product
 
     public function __construct($id, $name, $price,$genre,$rarity)
     {
-        parent::__construct($id, $name, $price,$rarity);
+        parent::__construct($id);
         $this->setGenre($genre);
     }
 

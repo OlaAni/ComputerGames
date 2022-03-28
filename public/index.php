@@ -1,24 +1,26 @@
 <?php
+
 session_start();
 
-//require '../src/functions.php';
+require '../src/functions.php';
 require '../src/session.php';
 require_once '../Product.php';
 require_once '../Game.php';
 require_once '../Part.php';
-$productsin = new Product(1,"",50,"");
+
+
+$productsin = new Product(1);
 $products = $productsin->get_products(3);
 
-$game4 = new Game(1,"",50," "," ");
-$game2 = new Game(2,"",100,"Action","");
-$part1 = new Part(3," ",0,"","");
+$arr = array(1);
+$pdo = get_connections();
+$sth = $pdo->query("SELECT * FROM product");
+$sth->setFetchMode(PDO::FETCH_CLASS, 'Product',$arr);
+$person = $sth->fetch();
 
 
-$arr = array($game4,$game2,$part1);
-for($i=0; $i<sizeof($arr);$i++)
-{
-   // print $arr[$i]->getName();
-}
+
+var_dump($person);
 
 //var_dump($_SESSION);
 //killSession();

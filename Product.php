@@ -1,4 +1,5 @@
 <?php
+
 require_once "src/functions.php";
 class Product
 {
@@ -6,6 +7,10 @@ class Product
     private float $price;
     private String $rarity;
     private int $id;
+    private String $description;
+    private String $image;
+    private int $type;
+
 
     function get_products($limit = null)
     {
@@ -25,12 +30,14 @@ class Product
     }
 
 
-    public function __construct($id,$name,$price,$rarity)
+    public function __construct($id)
     {
         $this->setId($id);
-        $this->setName($name);
-        $this->setPrice($price);
-        $this->setRarity($rarity);
+        $this->setName();
+        $this->setPrice();
+        $this->setRarity();
+        $this->setDescription();
+        $this->setImage();
     }
 
     public function getProduct()
@@ -101,12 +108,63 @@ class Product
     }
 
     /**
+     * @return String
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param String $description
+     */
+    public function setDescription(): void
+    {
+        $product = $this->getProduct();
+        $this->description = $product['description'];
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
     {
         return $this->id;
     }
+    /**
+     * @param String $image
+     */
+    public function setImage(): void
+    {
+        $product = $this->getProduct();
+        $this->image = $product['image'];    }
+
+    /**
+     * @return String
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType(): void
+    {
+        $product = $this->getProduct();
+        $this->type = $product['type'];
+    }
+
     public function showDetails(): void
     {
         echo "Product: ".$this->getName()." is €".$this->price."</br>";
