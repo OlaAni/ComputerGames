@@ -51,7 +51,8 @@ function set_user()
                 "name" => $_POST['name'],
                 "email" => $_POST['email'],
                 "password" => $_POST['password'],
-                "favgenre" => 'Fill',
+                "favgenre" => 'Blank',
+                "tradeamo" => 0,
             );
             $sql = "INSERT INTO customer (" . implode(', ', array_keys($new_user)) .")
             values (:". implode(', :', array_keys($new_user)).")";
@@ -97,7 +98,19 @@ function get_user($id)
 }
 
 
-function set_Session()
+function getShoppingCart()
 {
+    $cartItems = [];
+    if (isset($_SESSION['cart'])){
+        $cartItems = $_SESSION['cart'];
+    }
+    return $cartItems;
 
+}
+
+function addItemToCart($id)
+{
+    $cartItems = getShoppingCart();
+    $cartItems[$id] = $id;
+    $_SESSION['cart'] = $cartItems;
 }

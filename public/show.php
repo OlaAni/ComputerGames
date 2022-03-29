@@ -1,12 +1,14 @@
 <?php
-//require '../src/functions.php';
+//require '../src/session.php';
 require '../Product.php';
+require '../Cart.php';
 
 $id = $_GET['id'];
 //$product = get_product($id);
-$product =  new Product($id,"",0,"");
+$product =  new Product($id);
 
-var_dump($product);
+//var_dump($product);
+
 
 ?>
 <?php require 'templates/headerlogged.php'; ?>
@@ -43,8 +45,18 @@ var_dump($product);
     </div>
 </div>
 
-<button type="submit" class="btn btn-success">Buy</button>
+<form method="post" class="form-signin">
+    <input type="submit" name="BUY" value="BUY"  class="btn btn-success">Buy</>
+</form>
+
+<?php
+if(isset($_POST['BUY']))
+{
+
+    addItemToCart($product->getId());
+    var_dump($_SESSION['cart']);
 
 
-
+}
+?>
 <?php require 'templates/footer.php'; ?>

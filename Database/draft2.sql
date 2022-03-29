@@ -40,12 +40,17 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `email` varchar(100) NOT NULL DEFAULT '0',
   `password` varchar(50) NOT NULL DEFAULT '0',
   `age` int NOT NULL DEFAULT '0',
-  `favgenre` text NOT NULL,
+  `favgenre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tradeamo` float DEFAULT '0',
   PRIMARY KEY (`idCustomer`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.customer: ~0 rows (approximately)
+-- Dumping data for table comp_games.customer: ~3 rows (approximately)
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` (`idCustomer`, `name`, `email`, `password`, `age`, `favgenre`, `tradeamo`) VALUES
+	(1, 'Test1', 'test1@gmail.com', 'pass', 0, 'Fill', 0),
+	(2, 'Test2', 'test2@gmail.com', 'pass', 0, 'Fill', 0),
+	(3, 'Test2', 'test2@gmail.com', 'password', 0, 'Fill', 0);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.product
@@ -59,15 +64,17 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'BLANK',
   `description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'BLANK',
   `rarity` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'BLANK',
+  `type` int DEFAULT '1',
   PRIMARY KEY (`idProduct`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.product: ~0 rows (approximately)
+-- Dumping data for table comp_games.product: ~4 rows (approximately)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`) VALUES
-	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON'),
-	(2, 'ATG5', 60, 'Adventure', '0', 'ATG5.png', 'Advenutee Game', 'VERY'),
-	(3, 'AMD5', 100, '0', 'CPU', 'AMD5.png', 'AMD 5 Cpu', 'VERY');
+INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`, `type`) VALUES
+	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
+	(2, 'ATG5', 60, 'Adventure', '0', 'ATG5.png', 'Advenutee Game', 'VERY', 1),
+	(3, 'AMD5', 100, '0', 'CPU', 'AMD5.png', 'AMD 5 Cpu', 'VERY', 0),
+	(4, 'Test1', 30, 'Test', 'BLANK', 'Test.png', 'Test', 'Test', 1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.sale
@@ -87,10 +94,12 @@ CREATE TABLE IF NOT EXISTS `sale` (
   CONSTRAINT `fk_Cart_Admin` FOREIGN KEY (`Admin_idCustomer`) REFERENCES `admin` (`idAdmin`),
   CONSTRAINT `fk_Cart_Customer` FOREIGN KEY (`Customer_idCustomer`) REFERENCES `customer` (`idCustomer`),
   CONSTRAINT `fk_Cart_Tradein` FOREIGN KEY (`Tradein_idTradein`) REFERENCES `tradein` (`idTrade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.sale: ~0 rows (approximately)
+-- Dumping data for table comp_games.sale: ~1 rows (approximately)
 /*!40000 ALTER TABLE `sale` DISABLE KEYS */;
+INSERT INTO `sale` (`idSale`, `fullPrice`, `Customer_idCustomer`, `Product_idProduct`, `Admin_idCustomer`, `Tradein_idTradein`) VALUES
+	(1, 210, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `sale` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.tradein

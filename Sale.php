@@ -19,7 +19,7 @@ class  Sale
 
     function showCartDetails():void
     {
-        echo $this->customer->getName()." must pay for these products ". $this->cart->setProductNames();
+       $this->cart->setProductNames();
     }
 
     function Submit():void
