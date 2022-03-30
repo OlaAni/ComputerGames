@@ -3,6 +3,7 @@ class Cart
 {
     private float $fullPrice = 0;
     private $products = array();
+    private $qauntity = 0;
     protected Trade $trade;
 
     /**
@@ -45,6 +46,8 @@ class Cart
         $this->products = $products;
     }
 
+
+
     public function setProductNames():void
     {
         $i = 0;
@@ -59,6 +62,7 @@ class Cart
         foreach ($arr as $ar)
         {
             $i++;
+
             echo "Product".$i.": ".$ar."</br>";
         }
     }

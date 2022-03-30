@@ -17,7 +17,7 @@ for($i=1;$i<=3;$i++)
     array_push($test,$prod);
 }
 
-var_dump($_SESSION['email']);
+//var_dump($_SESSION['email']);
 //killSession();
 //print session_id();
 

@@ -4,14 +4,19 @@
 require '../src/functions.php';
 require '../Test/autoload.php';
 $products = array();
-removeItemFromCart(3);
-
 foreach($_SESSION['cart'] as $key=>$value)
 {
-    //echo 'The value of $_SESSION['."'".$key."'".'] is '."'".$value."'".' <br />';
     $prod = new Product($value);
-    //$prod->showDetails();
-    array_push($products,$prod);
+
+    //printf("%s x %d",$prod->getName(),getQuantity($prod->getId()));
+
+
+    ?>
+    <form method="post">
+    <input type="submit" name="remove" value="<?php removeItemFromCart($prod->getId()); ?>remove">
+    </form>
+    <?php
+array_push($products,$prod);
 }
 //var_dump($products);
 
@@ -23,7 +28,6 @@ print "Full price is ".$cart->getFullPrice()."</br>";
 
 $sale = new Sale();
 $sale->setCart($cart);
-$sale->showCartDetails();
 ?>
 
 

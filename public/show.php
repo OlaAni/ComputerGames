@@ -98,11 +98,7 @@ if(isset($_POST['BUY']))
 {
 
     addItemToCart($product->getId());
-    //increaseCartQuantity($product->getId(),$_POST['quantity']);
-    //var_dump($_POST['quantity']);
-    var_dump($_SESSION['cart']);
-
-
+    //increaseCartQuantity($product->getId());
 }
 ?>
 <?php require 'templates/footer.php'; ?>

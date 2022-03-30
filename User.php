@@ -115,13 +115,18 @@ class User
     public function Login(): void
     {
         //Login in User if statement for admin and customer
-        if($this->employee=="true")
+        if($this->getEmployee()=="true")
         {
-            //admin login
+            session_start();
+
+            header("Location: adminpage.php");
+
         }
         else
         {
             session_start();
+
+            header("Location: index.php");
 
         }
     }

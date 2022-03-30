@@ -49,6 +49,9 @@ session_start();
                 <li><a href="#contact">Contact</a></li>
 
             </ul>
+            <form action="cartpage.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="cart" class="button" type="submit">Cart</button>
+            </form>
             <form action="logout.php" method="post" class="navbar-form navbar-right">
                 <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
             </form>

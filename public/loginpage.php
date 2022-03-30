@@ -22,9 +22,9 @@ if (isset($_POST['submit'])) {
     $_SESSION['id'] = $user->getId();
     $_SESSION['email'] = $user->getEmail();
     $_SESSION['password'] = $user->getPassword();
-    if ($user1) {
-        header("Location: index.php");
-    }
+    $_SESSION['employee'] = $user->getEmployee();
+    $user->Login();
+
 
 
 }

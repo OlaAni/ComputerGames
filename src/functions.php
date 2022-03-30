@@ -116,30 +116,32 @@ function addItemToCart($id)
     $_SESSION['cart'] = $cartItems;
 }
 
-//function getQuantity($id,$cart)
-//{
-//    if(isset($cart[$id]))
-//    {
-//        return $cart[$id];
-//    }
-//    else
-//    {
-//        return 0;
-//    }
-//}
-//
-//function increaseCartQuantity($id,$amount)
-//{
-//    $cartItems = getShoppingCart();
-//    $quantity = getQuantity($id,$cartItems);
-//    $newQuantity = $quantity +$amount;
-//    $cartItems[$id] = $newQuantity;
-//    $_SESSION['cart'] = $cartItems;
-//}
-
 function removeItemFromCart($id)
 {
     $cartItems = getShoppingCart();
     unset($cartItems[$id]);
     $_SESSION['cart'] = $cartItems;
 }
+
+function getQuantity($id,$cart)
+{
+    if(isset($cart[$id]))
+    {
+        return $cart[$id];
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+function increaseCartQuantity($id)
+{
+    $cartItems = getShoppingCart();
+    $quantity = getQuantity($id,$cartItems);
+    $newQuantity = $quantity;
+    $cartItems[$id] = $newQuantity;
+
+    $_SESSION['cart'] = $cartItems;
+}
+
