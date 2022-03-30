@@ -1,108 +1,121 @@
 <?php
 require_once "src/functions.php";
-abstract class User
+class User
 {
     private String $name;
     private String $email;
     private String $password;
-    private bool $employee = false;
+    private String $employee = "false";
     private int $id;
 
 
-    public function __construct($name,$email,$password)
+    public function __construct($id)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
+        $this->setId($id);
+        $this->setName();
+        $this->setEmail();
+        $this->setPassword();
+        $this->setEmployee();
     }
 
-    function getUser($id)
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    function getUser()
     {
         $pdo = get_connections();
-        $query = 'SELECT * FROM user WHERE userID = :idVal';
+        $query = 'SELECT * FROM user WHERE idUser = :idVal';
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam('idVal',$id);
+        $stmt->bindParam('idVal',$this->id);
         $stmt->execute();
 
         return $stmt->fetch();
     }
 
-    public function getName(): string
+    /**
+     * @param String $name
+     */
+    public function setName(): void
     {
-        $pdo = get_connections();
-        $query = 'SELECT name FROM user WHERE userID = :idVal';
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam('idVal',$id);
-        $stmt->execute();
-
-        return $stmt->fetch();
-    }
-
-
-    public function getEmail(): string
-    {
-        $pdo = get_connections();
-        $query = 'SELECT email FROM user WHERE userID = :idVal';
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam('idVal',$id);
-        $stmt->execute();
-
-        return $stmt->fetch();
-    }
-
-
-    public function getPassword(): string
-    {
-        $pdo = get_connections();
-        $query = 'SELECT password FROM user WHERE userID = :idVal';
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam('idVal',$id);
-        $stmt->execute();
-
-        return $stmt->fetch();
-    }
-
-
-    public function setName(string $name): void
-    {
-        $user = $this->getName();
+        $user = $this->getUser();
         $this->name = $user['name'];
     }
 
-    public function setEmail(string $email): void
+    /**
+     * @param String $email
+     */
+    public function setEmail(): void
     {
-        $user = $this->getEmail();
-        $this->email = $user['email'];
-    }
-
-    public function setPassword(string $password): void
-    {
-        $user = $this->getPassword();
-        $this->password = $user['password'];
-    }
+        $user = $this->getUser();
+        $this->email = $user['email'];    }
 
     /**
      * @param bool $employee
      */
-    public function setEmployee(bool $employee): void
+    public function setEmployee(): void
     {
-        $this->employee = $employee;
-    }
+        $user = $this->getUser();
+        $this->employee = $user['employee'];    }
 
 
     /**
-     * @return bool
+     * @param String $password
      */
-    public function isEmployee(): bool
+    public function setPassword(): void
+    {
+        $user = $this->getUser();
+        $this->password = $user['password'];
+    }
+
+    /**
+     * @return String
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return String
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmployee(): string
     {
         return $this->employee;
     }
 
-
     public function Login(): void
     {
         //Login in User if statement for admin and customer
-        if($this->employee)
+        if($this->employee=="true")
         {
             //admin login
         }
@@ -110,25 +123,12 @@ abstract class User
         {
             session_start();
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $_SESSION['email'] = $_POST['email'];
-            $_SESSION['password'] = $_POST['password'];
-            $user1 = checkCred($email, $password);
-            //var_dump($user1);
-            //var_dump($_SESSION);
-
-
-            if ($user1) {
-                header("Location: index.php");
-            }
         }
     }
 
     public function showDetails(): void
     {
-        if($this->employee)
+        if($this->employee=="true")
         {
             echo $this->getName() ." employee status is true</br>";
         }

@@ -1,35 +1,38 @@
 <?php
 
-require_once "../src/functions.php";
+//require_once "../src/functions.php";
 require_once "../Test/autoload.php";
 
-include "templates/loginHeader.php";
 
 
 if (isset($_POST['submit'])) {
-    $user1 = new Customer( "Blank",$_POST['email'], $_POST['password'],0);
-    $user1->Login();
 
-//    $email = $_POST['email'];
-//    $password = $_POST['password'];
-//
-//    $_SESSION['email'] = $_POST['email'];
-//    $_SESSION['password'] = $_POST['password'];
-//    $user1 = checkCred($email, $password);
-//    //var_dump($user1);
-//    //var_dump($_SESSION);
-//
-//
-//    if ($user1) {
-//        header("Location: index.php");
-//    }
+    session_start();
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+
+    $user1 = checkCred($email, $password);
+    $user2 = $user1['idUser'];
+
+
+
+
+    $user = new User($user2);
+    $_SESSION['id'] = $user->getId();
+    $_SESSION['email'] = $user->getEmail();
+    $_SESSION['password'] = $user->getPassword();
+    if ($user1) {
+        header("Location: index.php");
+    }
 
 
 }
 
 
 ?>
+
+<?php require "templates/loginHeader.php"; ?>
 
 <form method="post">
     <label for="email">Email Address</label>
@@ -38,7 +41,8 @@ if (isset($_POST['submit'])) {
     <input type="password" name="password" id="password">
     <input type="submit" name="submit" value="Login">
 </form>
-<a href="index.php">Back to home</a>
+<?php echo $user->getName();
+?>
 
 <?php require 'templates/footer.php';?>
 

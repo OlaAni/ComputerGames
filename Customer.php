@@ -3,37 +3,68 @@ require_once "src/functions.php";
 class Customer extends User
 {
     private String $favGenre;
-    private int $id;
     private int $age;
-    private int $discountAmount;
+    private float $discountAmount;
 
-    public function __construct($name, $email, $password,$age)
+    public function __construct($id)
     {
-        parent::__construct($name, $email, $password);
-        $this->age = $age;
-
+        parent::__construct($id);
+        $this->setFavGenre();
+        $this->setDiscountAmount();
+        $this->setAge();
     }
 
-    function setAge(int $age): void
+    /**
+     * @param int $age
+     */
+    public function setAge(): void
     {
-        $this->age = $age;
+        $user = $this->getUser();
+        $this->age = $user['age'];
+    }
+    /**
+     * @param String $favGenre
+     */
+    public function setFavGenre(): void
+    {
+        $user = $this->getUser();
+        $this->favGenre = $user['favgenre'];
     }
 
-    public function getAge(): int
+    /**
+     * @param int $discountAmount
+     */
+    public function setDiscountAmount(): void
     {
-        return $this->age;
+        $user = $this->getUser();
+        $this->discountAmount = $user['tradeamo'];
     }
 
+    /**
+     * @return float
+     */
+    public function getDiscountAmount(): float
+    {
+        return $this->discountAmount;
+    }
+
+    /**
+     * @return String
+     */
     public function getFavGenre(): string
     {
         return $this->favGenre;
     }
 
-
-    public function setFavGenre(string $favGenre): void
+    /**
+     * @return int
+     */
+    public function getAge(): int
     {
-        $this->favGenre = $favGenre;
+        return $this->age;
     }
+
+
 
     function Update():void
     {
@@ -48,22 +79,6 @@ class Customer extends User
     }
 
 
-    /**
-     * @param int $discountAmount
-     */
-    public function setDiscountAmount(int $discountAmount): void
-    {
-        $this->discountAmount = $discountAmount;
-    }
-
-
-    /**
-     * @return int
-     */
-    public function getDiscountAmount(): int
-    {
-        return $this->discountAmount;
-    }
 
     public function showDetails(): void
     {

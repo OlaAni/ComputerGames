@@ -5,10 +5,10 @@ class Game extends Product
     public string $genre;
 
 
-    public function __construct($id, $name, $price,$genre,$rarity)
+    public function __construct($id)
     {
         parent::__construct($id);
-        $this->setGenre($genre);
+        $this->setGenre();
     }
 
     public function getGenre(): string
@@ -16,7 +16,7 @@ class Game extends Product
         return $this->genre;
     }
 
-    public function setGenre(string $genre): void
+    public function setGenre(): void
     {
         $game = $this->getProduct();
         $this->genre = $game["genre"];

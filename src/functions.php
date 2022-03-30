@@ -54,7 +54,7 @@ function set_user()
                 "favgenre" => 'Blank',
                 "tradeamo" => 0,
             );
-            $sql = "INSERT INTO customer (" . implode(', ', array_keys($new_user)) .")
+            $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
             values (:". implode(', :', array_keys($new_user)).")";
 
             $statement = $pdo->prepare($sql);
@@ -74,13 +74,14 @@ function setTestUser()
 function checkCred($email,$password)
 {
     $pdo = get_connections();
-    $query = 'SELECT * FROM customer WHERE email = :emailVal AND password = :passwordVal';
+    $query = 'SELECT * FROM user WHERE email = :emailVal AND password = :passwordVal';
     $stmt = $pdo->prepare($query);
     $stmt->bindParam('emailVal', $email);
 
     $stmt->bindParam('passwordVal', $password);
 
     $stmt->execute();
+
 
     return $stmt->fetch();
 }
@@ -89,7 +90,7 @@ function checkCred($email,$password)
 function get_user($id)
 {
     $pdo = get_connections();
-    $query = 'SELECT * FROM user WHERE userID = :idVal';
+    $query = 'SELECT * FROM user WHERE idUser = :idVal';
     $stmt = $pdo->prepare($query);
     $stmt->bindParam('idVal',$id);
     $stmt->execute();
@@ -112,5 +113,33 @@ function addItemToCart($id)
 {
     $cartItems = getShoppingCart();
     $cartItems[$id] = $id;
+    $_SESSION['cart'] = $cartItems;
+}
+
+//function getQuantity($id,$cart)
+//{
+//    if(isset($cart[$id]))
+//    {
+//        return $cart[$id];
+//    }
+//    else
+//    {
+//        return 0;
+//    }
+//}
+//
+//function increaseCartQuantity($id,$amount)
+//{
+//    $cartItems = getShoppingCart();
+//    $quantity = getQuantity($id,$cartItems);
+//    $newQuantity = $quantity +$amount;
+//    $cartItems[$id] = $newQuantity;
+//    $_SESSION['cart'] = $cartItems;
+//}
+
+function removeItemFromCart($id)
+{
+    $cartItems = getShoppingCart();
+    unset($cartItems[$id]);
     $_SESSION['cart'] = $cartItems;
 }

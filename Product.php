@@ -38,6 +38,7 @@ class Product
         $this->setRarity();
         $this->setDescription();
         $this->setImage();
+        $this->setType();
     }
 
     public function getProduct()

@@ -1,13 +1,19 @@
 <?php
-require '../src/functions.php';
-$user =get_user(6);
+//require '../src/functions.php';
+require '../Test/autoload.php';
 
 ?>
 
 <?php require 'templates/headerlogged.php';  ?>
+<?php
 
-<?php echo $user['name']; ?> </br>
-<?php echo $user['email']; ?></br>
-<?php echo $user['password']; ?>
+$user = new Customer($_SESSION['id']);
+//var_dump($_SESSION['id']);
+
+?>
+
+<?php echo $user->getName(); ?> </br>
+<?php echo $user->getEmail(); ?></br>
+<?php echo $user->getPassword(); ?>
 
 <?php require 'templates/footer.php';?>

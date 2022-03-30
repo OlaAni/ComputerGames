@@ -3,7 +3,6 @@
 session_start();
 
 require '../src/functions.php';
-require '../src/session.php';
 require_once '../Product.php';
 require_once '../Game.php';
 require_once '../Part.php';
@@ -12,13 +11,13 @@ require '../Cart.php';
 
 
 $test = array();
-for($i=1;$i<=4;$i++)
+for($i=1;$i<=3;$i++)
 {
     $prod = new Product($i);
     array_push($test,$prod);
 }
 
-//var_dump($_SESSION);
+var_dump($_SESSION['email']);
 //killSession();
 //print session_id();
 
