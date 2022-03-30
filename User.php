@@ -116,8 +116,7 @@ abstract class User
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['password'] = $_POST['password'];
             $user1 = checkCred($email, $password);
-            //var_dump($user1);
-            //var_dump($_SESSION);
+
 
 
             if ($user1) {
