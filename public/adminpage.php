@@ -1,4 +1,4 @@
-<?php require 'templates/headerlogged.php';  ?>
+<?php require 'templates/adminHeader.php';  ?>
 <?php
 
 
@@ -14,6 +14,14 @@ try {
     echo $sql . "<br>" . $error->getMessage();
 }
 
+require "../Test/autoload.php";
+$test = array();
+for($i=1;$i<=4;$i++)
+{
+    $prod = new Product($i);
+    array_push($test,$prod);
+}
+
 ?>
 <h2>Update Products</h2>
 <table>
@@ -22,7 +30,7 @@ try {
         <th>#</th>
         <th>Name</th>
         <th>Price</th>
-        <th>Genre</th>
+        <th>Genre/Part</th>
         <th>Image</th>
         <th>Descrition</th>
         <th>rarity</th>
@@ -31,17 +39,29 @@ try {
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($result as $row) : ?>
+    <?php foreach ($test as $row) : ?>
         <tr>
-            <td><?php echo $row["idProduct"]; ?></td>
-            <td><?php echo $row["name"]; ?></td>
-            <td><?php echo $row["price"] ; ?></td>
-            <td><?php echo $row["genre"]; ?></td>
-            <td><?php echo $row["image"];?></td>
-            <td><?php echo $row["description"]; ?></td>
-            <td><?php echo $row["rarity"]; ?> </td>
-            <td><?php echo $row["type"]; ?> </td>
-            <td><a href="update-single.php?idProduct=<?php echo $row["idProduct"];
+            <td><?php echo $row->getID(); ?></td>
+            <td><?php echo $row->getName(); ?></td>
+            <td><?php echo $row->getPrice() ; ?></td>
+            <td><?php
+                if($row->getType()==0)
+                {
+                    $row = new Part($row->getID());
+                    echo $row->getPartType();
+                }
+                else
+                {
+                    $row = new Game($row->getID());
+                    echo $row->getGenre();
+
+                }
+                ?></td>
+            <td><?php echo $row->getImage();?></td>
+            <td><?php echo $row->getDescription(); ?></td>
+            <td><?php echo $row->getRarity(); ?> </td>
+            <td><?php echo $row->getType(); ?> </td>
+            <td><a href="update-single.php?idProduct=<?php echo $row->getID();
                 ?>">Edit</a></td>
         </tr>
     <?php endforeach; ?>

@@ -4,19 +4,20 @@
 require '../src/functions.php';
 require '../Test/autoload.php';
 $products = array();
+$i=0;
 foreach($_SESSION['cart'] as $key=>$value)
 {
     $prod = new Product($value);
 
-    //printf("%s x %d",$prod->getName(),getQuantity($prod->getId()));
+    printf("%s x %d",$prod->getName(),$prod->getId());
+    array_push($products,$prod);
 
 
     ?>
     <form method="post">
-    <input type="submit" name="remove" value="<?php removeItemFromCart($prod->getId()); ?>remove">
+    <input type="submit" name="remove" value="<?php unset($products[1]) ?>remove">
     </form>
     <?php
-array_push($products,$prod);
 }
 //var_dump($products);
 
