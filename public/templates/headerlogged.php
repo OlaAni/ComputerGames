@@ -46,7 +46,7 @@ session_start();
                         <li><a href="#">Parts</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
 
             </ul>
             <form action="cartpage.php" method="post" class="navbar-form navbar-right">
