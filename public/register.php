@@ -11,7 +11,7 @@ require_once "../Test/autoload.php";
 
 
 <?php if (isset($_POST['submit'])) {?>
-        <?php $user = new Customer($_POST['name'],$_POST['email'],$_POST['password'],0);
+        <?php $user = new Customer(0);
         $user->Register();
 
         ?>

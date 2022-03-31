@@ -53,6 +53,7 @@ function set_user()
                 "password" => $_POST['password'],
                 "favgenre" => 'Blank',
                 "tradeamo" => 0,
+                "employee"=>'false',
             );
             $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
             values (:". implode(', :', array_keys($new_user)).")";
