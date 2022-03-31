@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     <input type="password" name="password" id="password">
     <input type="submit" name="submit" value="Login">
 </form>
-<?php echo $user->getName();
+<?php //echo $user->getName();
 ?>
 
 <?php require 'templates/footer.php';?>
