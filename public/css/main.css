@@ -32,3 +32,8 @@ form{
     color: red;
 }
 
+.small
+{
+    width: 100px;
+    height: 100px;
+}

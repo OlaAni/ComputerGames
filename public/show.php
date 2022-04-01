@@ -1,8 +1,7 @@
 <?php require 'templates/headerlogged.php'; ?>
 
 <?php
-//require '../src/session.php';
-//killSession();
+//require '../src/functions.php';
 require '../autoload.php';
 
 $id = $_GET['id'];
@@ -88,16 +87,10 @@ else
 
 ?>
 
-<form method="post" class="form-signin">
-    <input type="number" name="quantity" value="quantity">
-    <input type="submit" name="BUY" value="BUY"  class="btn btn-success">
+<form action= "/?action=addToCart&id=<?=$product->getId()?>" method="post" class="form-signin">
+    <button>Add to Cart</button>
 </form>
 
-<?php
-$cart = new Cart();
-if(isset($_POST['BUY']))
-{
 
-}
-?>
+
 <?php require 'templates/footer.php'; ?>

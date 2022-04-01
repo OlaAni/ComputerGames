@@ -22,8 +22,16 @@ class  Sale
        $this->cart->setProductNames();
     }
 
-    function Submit():void
+    function Submit($price): mixed
     {
+        $pdo = get_connections();
+        $query = 'INSERT INTO sale(fullPrice,CustomerID) VALUES (:price,:id)';
+        $stmt = $pdo->prepare($query);
+        $id = $_SESSION["id"];
+        $stmt->bindParam(':price',$price);
+        $stmt->bindParam(':id',$id);
+        $stmt->execute();
 
+        return $stmt->fetch();
     }
 }

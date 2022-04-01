@@ -1,59 +1,84 @@
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
-session_start();
-//require '../src/functions.php';
+require "../src/functions.php";
 require '../autoload.php';
-$products = array();
-var_dump($_SESSION['cartTest']);
-foreach($_SESSION['cartTest'] as $key=>$value)
-{
-    //$prod = new Product($value);
-    //$prod->showDetails();
-    //array_push($products,$prod);
-
-
-
-    ?>
-    <form method="post">
-        <input type="submit" name="remove" value="Remove">
-    </form>
-    <?php
-}
-
-$cart = new Cart();
-$cart->setProducts($products);
-
-
-$cart->calcFullPrice();
-print "Full price is ".$cart->getFullPrice()."</br>";
-
-$sale = new Sale();
-$sale->setCart($cart);
 ?>
 
-
+<table>
+    <th>Image</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Action</th>
 <?php
 
+//var_dump($_SESSION["cart"]);
+
+$cartItems = $_SESSION["cart"];
+foreach($cartItems as $id => $quantity):
+    $product = new Product($id);
+    $price = $product->getPrice();
+    $subtotal = $quantity * $price;
+    // update total
+    $total += $subtotal;
+    // format prices to 2 d.p.
+    $price = number_format($price, 2);
+    $subtotal = number_format($subtotal, 2);
+    ?> <tr>
+        <td>
+            <img src="/images/<?= $product->getImage() ?>"
+                 alt="<?= $product->getImage() ?> " class="small">
+        </td>
+        <td>
+            <h4><?= $product->getName(); ?></h4>
+            <?= $product->getDescription() ?>
+        </td>
+        <td>
+            $ <?= $price ?>
+        </td>
+        <td>
+            <form action="/?action=changeCartQuantity&id=<?= $id ?>"
+                  method="post">
+                 <button type="submit" name="amount" value="reduce"
+                          class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+                <?= $quantity ?>
+                <button type="submit" name="amount" value="increase"
+                        class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </form>
+        </td>
+        <td>
+            $ <?= $subtotal ?>
+        </td>
+        <td>
+            <form action="/?action=removeFromCart&id=<?= $id ?>"
+                  method="post">
+                <button class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Remove
+                </button>
+            </form>
+        </td>
+</tr>
+<?php endforeach; ?>
+</table>
+        <?php
+        $total = number_format($total, 2);
+        ?>
+        $ <?= $total ?>
+        Total
+<?php
+$sale = new Sale();
 if (isset($_POST['submit'])) {
-    $pdo = get_connections();
-    $query = 'INSERT INTO sale(fullPrice,CustomerID) VALUES (:price,:id)';
-    $stmt = $pdo->prepare($query);
-    $id = $_SESSION["id"];
-    $price = $cart->getFullPrice();
-    $stmt->bindParam(':price',$price);
-    $stmt->bindParam(':id',$id);
-    $stmt->execute();
-
-    return $stmt->fetch();
+    $sale->Submit($total);
 }
-
-
-if (isset($_POST['remove'])) {
-
-}
-
 ?>
 <form method="post">
     <input type="submit" name="submit" value="Submit">
 </form>
+
