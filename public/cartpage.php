@@ -14,8 +14,6 @@ require '../autoload.php';
     <th>Action</th>
 <?php
 
-//var_dump($_SESSION["cart"]);
-
 $cartItems = $_SESSION["cart"];
 foreach($cartItems as $id => $quantity):
     $product = new Product($id);

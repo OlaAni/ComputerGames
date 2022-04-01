@@ -2,10 +2,10 @@
 require_once "functions.php";
 class User
 {
-    private String $name;
-    private String $email;
-    private String $password;
-    private String $employee = "false";
+    private string $name;
+    private string $email;
+    private string $password;
+    private string $employee = "false";
     private int $id;
 
 
@@ -31,7 +31,7 @@ class User
         $pdo = get_connections();
         $query = 'SELECT * FROM user WHERE idUser = :idVal';
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam('idVal',$this->id);
+        $stmt->bindParam('idVal', $this->id);
         $stmt->execute();
 
         return $stmt->fetch();
@@ -52,7 +52,8 @@ class User
     public function setEmail(): void
     {
         $user = $this->getUser();
-        $this->email = $user['email'];    }
+        $this->email = $user['email'];
+    }
 
     /**
      * @param bool $employee
@@ -60,7 +61,8 @@ class User
     public function setEmployee(): void
     {
         $user = $this->getUser();
-        $this->employee = $user['employee'];    }
+        $this->employee = $user['employee'];
+    }
 
 
     /**
@@ -112,7 +114,7 @@ class User
         return $this->employee;
     }
 
-    function checkCred($email,$password)
+    function checkCred($email, $password)
     {
         $pdo = get_connections();
         $query = 'SELECT * FROM user WHERE email = :emailVal AND password = :passwordVal';
@@ -131,15 +133,12 @@ class User
     public function Login(): void
     {
         //Login in User if statement for admin and customer
-        if($this->getEmployee()=="true")
-        {
+        if ($this->getEmployee() == "true") {
             session_start();
             $_SESSION["employee"] = $this->getEmployee();
             header("Location: adminpage.php");
 
-        }
-        else
-        {
+        } else {
             session_start();
             $_SESSION["employee"] = $this->getEmployee();
 
@@ -150,15 +149,53 @@ class User
 
     public function showDetails(): void
     {
-        if($this->employee=="true")
-        {
-            echo $this->getName() ." employee status is true</br>";
-        }
-        else
-        {
-            echo $this->getName() ." employee status is false</br>";
+        if ($this->employee == "true") {
+            echo $this->getName() . " employee status is true</br>";
+        } else {
+            echo $this->getName() . " employee status is false</br>";
 
         }
 
+    }
+
+    public function Search()
+    {
+
+        if (isset($_POST['submit'])) {
+
+            $pdo = get_connections();
+            $query = 'SELECT * FROM product WHERE name = :name';
+            $name = $_POST['search'];
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam('name', $name);
+            $stmt->execute();
+
+            $result = $stmt->fetch();
+            /*try {
+                $sql = "SELECT * FROM product WHERE name = :name";
+                $name = $_POST['search'];
+
+                $statement = $pdo->prepare($sql);
+                $statement->bindParam(':name', $name, PDO::PARAM_STR);
+                $statement->execute();
+                $result = $statement->fetchAll();
+            } catch (PDOException $error) {
+                echo $sql . "<br>" . $error->getMessage();
+            }*/
+        }
+
+        if (isset($_POST['submit']))
+        {
+            if ($result) {
+                $i = intval($result["idProduct"]);
+
+                var_dump($result);
+                header('Location: show.php?id='.$i);
+            }
+            else
+            {
+                header("Location: noProduct.php");
+            }
+        }
     }
 }

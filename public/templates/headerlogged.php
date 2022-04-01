@@ -1,4 +1,6 @@
-<?php session_start()?>
+<?php
+
+session_start()?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +50,19 @@
 
             </ul>
             <?php if($_SESSION["employee"]=="false") {?>
+
+
+                <form action="search.php" method="post"  class="navbar-form navbar-right">
+                    <input type="text" id="search" name="search">
+                    <input type="submit" name="submit" value="View Results">
+                </form>
+
+                <?php
+
+                //$user0 = new User(0);
+                //$user0->Search();
+                ?>
+
             <form action="logout.php" method="post" class="navbar-form navbar-right">
                 <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
             </form>
