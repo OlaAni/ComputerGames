@@ -2,11 +2,7 @@
 
 session_start();
 
-require '../src/functions.php';
-require_once '../Product.php';
-require_once '../Game.php';
-require_once '../Part.php';
-require '../Cart.php';
+require '../autoload.php';
 
 
 

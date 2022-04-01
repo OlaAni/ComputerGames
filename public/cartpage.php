@@ -1,16 +1,17 @@
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
+session_start();
 //require '../src/functions.php';
-require '../Test/autoload.php';
+require '../autoload.php';
 $products = array();
-foreach($_SESSION['cart'] as $key=>$value)
+var_dump($_SESSION['cartTest']);
+foreach($_SESSION['cartTest'] as $key=>$value)
 {
-    $prod = new Product($value);
+    //$prod = new Product($value);
     //$prod->showDetails();
-    array_push($products,$prod);
-    var_dump($products[$key]);
-    var_dump($_SESSION['cart']);
+    //array_push($products,$prod);
+
 
 
     ?>
@@ -50,7 +51,6 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['remove'])) {
 
-    unset($products[$key]);
 }
 
 ?>

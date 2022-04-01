@@ -78,10 +78,10 @@ class Cart
 
     }
 
-    function addItemToCart($key,$id)
+    function addItemToCart($id)
     {
         $cartItems = $this->getShoppingCart();
-        $cartItems[$key+1] = $id;
+        $cartItems[$id] = $id;
         $_SESSION['cart'] = $cartItems;
     }
 

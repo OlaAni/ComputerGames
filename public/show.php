@@ -1,8 +1,9 @@
+<?php require 'templates/headerlogged.php'; ?>
+
 <?php
 //require '../src/session.php';
 //killSession();
-
-require '../Test/autoload.php';
+require '../autoload.php';
 
 $id = $_GET['id'];
 //$product = get_product($id);
@@ -12,7 +13,6 @@ $product =  new Product($id);
 
 
 ?>
-<?php require 'templates/headerlogged.php'; ?>
 
 <h1><?php echo $product->getName(); ?></h1>
 
@@ -98,8 +98,6 @@ $cart = new Cart();
 if(isset($_POST['BUY']))
 {
 
-    $cart->addItemToCart(0,$product->getId());
-    //increaseCartQuantity($product->getId());
 }
 ?>
 <?php require 'templates/footer.php'; ?>

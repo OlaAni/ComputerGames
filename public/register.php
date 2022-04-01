@@ -1,8 +1,5 @@
 <?php
-
-
-require '../src/functions.php';
-require_once "../Test/autoload.php";
+require_once "../autoload.php";
 
 
 

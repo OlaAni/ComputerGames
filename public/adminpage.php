@@ -14,7 +14,7 @@ try {
     echo $sql . "<br>" . $error->getMessage();
 }
 
-require "../Test/autoload.php";
+require "../autoload.php";
 $test = array();
 for($i=1;$i<=4;$i++)
 {

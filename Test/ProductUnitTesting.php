@@ -1,5 +1,5 @@
 <?php
-require_once "autoload.php";
+require_once "../autoload.php";
 
 $game4 = new Game(1,"",50," "," ");
 $game2 = new Game(2,"",100,"Action","");

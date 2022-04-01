@@ -1,6 +1,5 @@
 <?php
-//require '../src/functions.php';
-require '../Test/autoload.php';
+require '../autoload.php';
 
 ?>
 
