@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 
 require '../autoload.php';
 
@@ -17,7 +17,6 @@ for($i=1;$i<=3;$i++)
 //killSession();
 //print session_id();
 
-var_dump($_SESSION["employee"]);
 
 ?>
 
