@@ -1,4 +1,5 @@
 <?php session_start()?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +44,7 @@
                     </ul>
                 </li>
                 <li><a href="contact.php">Contact</a></li>
+                <li><a href="tradein.php">Trade</a></li>
 
             </ul>
             <?php if($_SESSION["employee"]=="false") {?>
