@@ -98,7 +98,7 @@ $cart = new Cart();
 if(isset($_POST['BUY']))
 {
 
-    $cart->addItemToCart($product->getId());
+    $cart->addItemToCart(0,$product->getId());
     //increaseCartQuantity($product->getId());
 }
 ?>

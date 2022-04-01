@@ -171,5 +171,10 @@ class Product
         echo "Product: ".$this->getName()." is €".$this->price."</br>";
     }
 
+    public function Search()
+    {
+
+    }
+
 
 }

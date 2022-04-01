@@ -17,15 +17,16 @@ $product = new Game(1);
 <p>Trade in to get a percent off on your profile</p>
 <?php
 if (isset($_POST['submit'])) {
+    $pdo = get_connections();
+
     try {
         require_once '../src/functions.php';
         $product =[
             "tradeamo" => $_POST['tradeamo'],
         ];
         $sql = "UPDATE user
- SET tradeamo = :tradeamo,
- WHERE idProduct = :idProduct";
-        $pdo = get_connections();
+ SET tradeamo = :tradeamo
+ WHERE idUser = ".$user->getId().";";
         $statement = $pdo->prepare($sql);
         $statement->execute($product);
     } catch(PDOException $error) {
@@ -36,8 +37,9 @@ if (isset($_POST['submit'])) {
 ?>
 
 <form method="post">
+
     <label for="name">Trade In</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="tradeamo" id="tradeamo">
     <input type="submit" name="submit" value="Submit">
 </form>
 <?php require 'templates/footer.php';?>
