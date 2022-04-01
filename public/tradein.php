@@ -28,8 +28,7 @@ if (isset($_POST['submit'])) {
         ];
         $sql = sprintf(
             "INSERT INTO %s (%s) values (%s)",
-            "tradein",
-            implode(", ", array_keys($product)),
+            "trade",
             implode(", ", array_keys($product)),
             ":" . implode(", :", array_keys($product))
         );
@@ -41,6 +40,8 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+
+
 
 <form method="post">
 
