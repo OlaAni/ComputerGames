@@ -21,11 +21,18 @@ if (isset($_POST['submit'])) {
     try {
         require_once '../src/functions.php';
         $product =[
+
             "tradeamo" => $_POST['tradeamo'],
+            "tradeName" => $_POST['tradeName'],
+            "tradeamo" => $_POST['tradeValue'],
         ];
-        $sql = "UPDATE user
- SET tradeamo = :tradeamo
- WHERE idUser = ".$user->getId().";";
+        $sql = sprintf(
+            "INSERT INTO %s (%s) values (%s)",
+            "tradein",
+            implode(", ", array_keys($product)),
+            implode(", ", array_keys($product)),
+            ":" . implode(", :", array_keys($product))
+        );
         $statement = $pdo->prepare($sql);
         $statement->execute($product);
     } catch(PDOException $error) {
