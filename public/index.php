@@ -1,10 +1,5 @@
 <?php
-
-
-
 require '../autoload.php';
-
-
 
 $test = array();
 for($i=1;$i<=3;$i++)

@@ -18,43 +18,6 @@ DROP DATABASE IF EXISTS `comp_games`;
 CREATE DATABASE IF NOT EXISTS `comp_games` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `comp_games`;
 
--- Dumping structure for table comp_games.admin
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `idAdmin` int NOT NULL,
-  `name` int DEFAULT NULL,
-  `email` int DEFAULT NULL,
-  `password` int DEFAULT NULL,
-  PRIMARY KEY (`idAdmin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table comp_games.admin: ~0 rows (approximately)
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
-
--- Dumping structure for table comp_games.customer
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `idCustomer` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '0',
-  `email` varchar(100) NOT NULL DEFAULT '0',
-  `password` varchar(50) NOT NULL DEFAULT '0',
-  `age` int NOT NULL DEFAULT '0',
-  `favgenre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `tradeamo` float DEFAULT '0',
-  `emlpoyee` int DEFAULT '0',
-  PRIMARY KEY (`idCustomer`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table comp_games.customer: ~4 rows (approximately)
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` (`idCustomer`, `name`, `email`, `password`, `age`, `favgenre`, `tradeamo`, `emlpoyee`) VALUES
-	(1, 'Test1', 'test1@gmail.com', 'pass', 0, 'Fill', 0, 0),
-	(2, 'Test2', 'test2@gmail.com', 'pass', 0, 'Fill', 0, 0),
-	(3, 'Test2', 'test2@gmail.com', 'password', 0, 'Fill', 0, 0),
-	(4, 'OlaTest', 'olaTest@gmail.com', 'pass', 0, 'Blank', 0, 0);
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-
 -- Dumping structure for table comp_games.product
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
@@ -73,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Dumping data for table comp_games.product: ~4 rows (approximately)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`, `type`) VALUES
-	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
+	(1, 'DogWatch', 200, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
 	(2, 'ATG5', 100, 'Adventure', '0', 'ATG5.png', 'Adventure Game', 'VERY', 1),
 	(3, 'AMD5', 100, '0', 'CPU', 'AMD5.png', 'AMD 5', 'VERY', 0),
 	(4, 'Test1', 30, 'Test', 'BLANK', 'Test.png', 'Test', 'Test', 1);
@@ -97,9 +60,9 @@ CREATE TABLE IF NOT EXISTS `sale` (
   CONSTRAINT `fk_Cart_Admin` FOREIGN KEY (`Admin_idCustomer`) REFERENCES `admin` (`idAdmin`),
   CONSTRAINT `fk_Cart_Customer` FOREIGN KEY (`Customer_idCustomer`) REFERENCES `customer` (`idCustomer`),
   CONSTRAINT `fk_Cart_Tradein` FOREIGN KEY (`Tradein_idTradein`) REFERENCES `tradein` (`idTrade`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.sale: ~6 rows (approximately)
+-- Dumping data for table comp_games.sale: ~9 rows (approximately)
 /*!40000 ALTER TABLE `sale` DISABLE KEYS */;
 INSERT INTO `sale` (`idSale`, `fullPrice`, `CustomerID`, `Customer_idCustomer`, `Product_idProduct`, `Admin_idCustomer`, `Tradein_idTradein`) VALUES
 	(1, 210, NULL, NULL, NULL, NULL, NULL),
@@ -107,20 +70,34 @@ INSERT INTO `sale` (`idSale`, `fullPrice`, `CustomerID`, `Customer_idCustomer`, 
 	(3, 100, NULL, NULL, NULL, NULL, NULL),
 	(4, 0, NULL, NULL, NULL, NULL, NULL),
 	(5, 110, NULL, NULL, NULL, NULL, NULL),
-	(9, 100, 6, NULL, NULL, NULL, NULL);
+	(9, 100, 6, NULL, NULL, NULL, NULL),
+	(10, 400, 1, NULL, NULL, NULL, NULL),
+	(11, 400, 1, NULL, NULL, NULL, NULL),
+	(12, 500, 1, NULL, NULL, NULL, NULL),
+	(13, 188, 1, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `sale` ENABLE KEYS */;
 
--- Dumping structure for table comp_games.tradein
-DROP TABLE IF EXISTS `tradein`;
-CREATE TABLE IF NOT EXISTS `tradein` (
-  `idTrade` int NOT NULL,
+-- Dumping structure for table comp_games.trade
+DROP TABLE IF EXISTS `trade`;
+CREATE TABLE IF NOT EXISTS `trade` (
+  `idTrade` int NOT NULL AUTO_INCREMENT,
+  `tradeamo` varchar(50) DEFAULT NULL,
+  `tradeName` varchar(50) DEFAULT NULL,
+  `tradeValue` varchar(50) DEFAULT NULL,
   `discount` float DEFAULT NULL,
   PRIMARY KEY (`idTrade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.tradein: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tradein` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tradein` ENABLE KEYS */;
+-- Dumping data for table comp_games.trade: ~0 rows (approximately)
+/*!40000 ALTER TABLE `trade` DISABLE KEYS */;
+INSERT INTO `trade` (`idTrade`, `tradeamo`, `tradeName`, `tradeValue`, `discount`) VALUES
+	(1, '1', 'DogWatch', '50', NULL),
+	(2, '1', 'DogWatch', '50', NULL),
+	(3, '1', 'DogWatch', '50', NULL),
+	(4, '1', 'DogWatch', '50', NULL),
+	(5, '1', 'ATG5', '50', NULL),
+	(6, '', 'DogWatch', '', NULL);
+/*!40000 ALTER TABLE `trade` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.user
 DROP TABLE IF EXISTS `user`;
@@ -137,11 +114,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.user: ~4 rows (approximately)
+-- Dumping data for table comp_games.user: ~7 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `age`, `favgenre`, `tradeamo`, `employee`, `location`) VALUES
 	(0, '0', '0', '0', 0, 'Set', 0, 'false', 'NOWHERE'),
-	(1, 'Olamide', 'ola@gmail.com', 'pass', 18, 'Action', 0, 'false', 'NOWHERE'),
+	(1, 'Olamide', 'ola@gmail.com', 'pass', 18, 'Action', 0.53, 'false', 'NOWHERE'),
 	(2, 'Test', 'test@gmail.com', 'pass', 8, 'Adventure', 0, 'false', 'NOWHERE'),
 	(4, 'ADMINOla', 'adminola@gmail.com', 'pass', 0, 'Set', 0, 'true', 'NOWHERE'),
 	(5, 'Ola', 'ola@gmial.com', 'pass', 0, 'Blank', 0, 'false', 'NOWHERE'),

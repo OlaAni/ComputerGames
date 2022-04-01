@@ -11,9 +11,9 @@ $user = new Customer($_SESSION['id']);
 
 ?>
 
-<?php echo $user->getName(); ?> </br>
-<?php echo $user->getEmail(); ?></br>
-<?php echo $user->getPassword(); ?>
+Name: <?php echo $user->getName(); ?> </br>
+Email: <?php echo $user->getEmail(); ?></br>
+Discount: <?php echo $user->getDiscountAmount(); ?>
 <form action="tradein.php" method="post" >
     <button name="Submit" value="cart" class="button" type="submit">Trade In</button>
 </form>

@@ -3,6 +3,11 @@
 <?php
 require "../src/functions.php";
 require '../autoload.php';
+
+$user = new Customer($_SESSION['id']);
+$cart = new Cart();
+$sale = new Sale();
+
 ?>
 
 <table>
@@ -66,14 +71,23 @@ foreach($cartItems as $id => $quantity):
 <?php endforeach; ?>
 </table>
         <?php
+        $cart->setCustomer($user);
+        $cart->setNewPrice($total);
+        $newTotal = $cart->getFullPrice();
+        $newTotal = number_format($newTotal, 2);
         $total = number_format($total, 2);
         ?>
-        $ <?= $total ?>
-        Total
+
+        € <?= $total ?>
+        Total</br></br> Discount Amount:
+        <?php
+        echo $user->getDiscountAmount();
+        ?>
+        € <?= $newTotal ?>
+        Discount Total
 <?php
-$sale = new Sale();
 if (isset($_POST['submit'])) {
-    $sale->Submit($total);
+    $sale->Submit($newTotal);
 }
 ?>
 <form method="post">

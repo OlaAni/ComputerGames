@@ -14,14 +14,14 @@ $game4->showDetails();
 $game2->showDetails();
 $part1->showDetails();
 
-$customer1 = new Customer(1);
+$customer1 = new Customer(2);
 $cart = new Cart();
 $arr = array($game4,$game2,$part1);
 $cart->setProducts($arr);
 $cart->calcFullPrice();
 print "Full price is ".$cart->getFullPrice()."</br>";
 $trade1 = new Trade();
-$cart->setTrade($trade1);
+$cart->setCustomer($customer1);
 $trade1->calDiscount($game2->getRarity());
 $cart->setNewPrice($cart->getFullPrice());
 echo "</br></br> The discount is ".$trade1->getDiscount(). "</br>Your new price is ".$cart->getFullPrice()."</br>" ;
