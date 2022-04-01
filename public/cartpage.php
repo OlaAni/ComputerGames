@@ -4,26 +4,25 @@
 require '../src/functions.php';
 require '../Test/autoload.php';
 $products = array();
-$i=0;
 foreach($_SESSION['cart'] as $key=>$value)
 {
     $prod = new Product($value);
 
-    printf("%s x %d",$prod->getName(),$prod->getId());
     array_push($products,$prod);
 
 
     ?>
     <form method="post">
-    <input type="submit" name="remove" value="<?php unset($products[1]) ?>remove">
+        <input type="submit" name="remove" value="Remove">
     </form>
     <?php
 }
-//var_dump($products);
 
 
 $cart = new Cart();
 $cart->setProducts($products);
+
+
 $cart->calcFullPrice();
 print "Full price is ".$cart->getFullPrice()."</br>";
 
@@ -36,14 +35,23 @@ $sale->setCart($cart);
 
 if (isset($_POST['submit'])) {
     $pdo = get_connections();
-    $query = 'INSERT INTO sale(fullPrice) VALUES (:price)';
+    $query = 'INSERT INTO sale(fullPrice,CustomerID) VALUES (:price,:id)';
     $stmt = $pdo->prepare($query);
+    $id = $_SESSION["id"];
     $price = $cart->getFullPrice();
     $stmt->bindParam(':price',$price);
+    $stmt->bindParam(':id',$id);
     $stmt->execute();
 
     return $stmt->fetch();
 }
+
+
+if (isset($_POST['remove'])) {
+
+    unset($products[$key]);
+}
+
 ?>
 <form method="post">
     <input type="submit" name="submit" value="Submit">

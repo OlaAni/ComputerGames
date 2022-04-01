@@ -27,6 +27,8 @@ require_once "../Test/autoload.php";
         <input type="text" name="email" id="email">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location">
         <input type="submit" name="submit" value="Submit">
     </form>
     <a href="index.php">Back to home</a>

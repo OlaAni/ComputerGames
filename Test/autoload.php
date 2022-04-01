@@ -1,5 +1,4 @@
 <?php
-//require_once "../RarityType.php";
 require_once "../User.php";
 require_once "../Cart.php";
 

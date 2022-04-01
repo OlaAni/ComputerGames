@@ -51,6 +51,7 @@ function set_user()
                 "name" => $_POST['name'],
                 "email" => $_POST['email'],
                 "password" => $_POST['password'],
+                "location" => $_POST['location'],
                 "favgenre" => 'Blank',
                 "tradeamo" => 0,
                 "employee"=>'false',
