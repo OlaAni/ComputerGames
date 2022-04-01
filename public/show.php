@@ -94,10 +94,11 @@ else
 </form>
 
 <?php
+$cart = new Cart();
 if(isset($_POST['BUY']))
 {
 
-    addItemToCart($product->getId());
+    $cart->addItemToCart($product->getId());
     //increaseCartQuantity($product->getId());
 }
 ?>

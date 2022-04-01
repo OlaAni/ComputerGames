@@ -1,8 +1,4 @@
-<?php
-session_start();
-
-?>
-
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,19 +38,39 @@ session_start();
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Games</a></li>
-                        <li><a href="#">Parts</a></li>
+                        <li><a href="gameTab.php">Games</a></li>
+                        <li><a href="partTab.php">Parts</a></li>
                     </ul>
                 </li>
                 <li><a href="contact.php">Contact</a></li>
 
             </ul>
-            <form action="cartpage.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="cart" class="button" type="submit">Cart</button>
-            </form>
+            <?php if($_SESSION["employee"]=="false") {?>
             <form action="logout.php" method="post" class="navbar-form navbar-right">
                 <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
             </form>
+            <form action="cartpage.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="cart" class="button" type="submit">Cart</button>
+            </form>
+
+            <form action="profile.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="profile" class="button" type="submit">Profile</button>
+            </form>
+            <?php }
+            else if($_SESSION["employee"]=="true"){?>
+            <form action="logout.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
+            </form>
+            <form action="adminpage.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="admin" class="button" type="submit">AdminPage</button>
+            </form>
+
+            <form action="profile.php" method="post" class="navbar-form navbar-right">
+                <button name="Submit" value="profile" class="button" type="submit">Profile</button>
+            </form>
+            <?php }?>
+
+
         </div>
 
 

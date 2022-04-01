@@ -15,9 +15,6 @@ if (isset($_POST['submit'])) {
     $user1 = checkCred($email, $password);
     $user2 = $user1['idUser'];
 
-
-
-
     $user = new User($user2);
     $_SESSION['id'] = $user->getId();
     $_SESSION['email'] = $user->getEmail();

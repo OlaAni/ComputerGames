@@ -68,4 +68,50 @@ class Cart
     }
 
 
+    public function getShoppingCart()
+    {
+        $cartItems = [];
+        if (isset($_SESSION['cart'])){
+            $cartItems = $_SESSION['cart'];
+        }
+        return $cartItems;
+
+    }
+
+    function addItemToCart($id)
+    {
+        $cartItems = $this->getShoppingCart();
+        $cartItems[1] = $id;
+        $_SESSION['cart'] = $cartItems;
+    }
+
+    function removeItemFromCart($id)
+    {
+        $cartItems = $this->getShoppingCart();
+        unset($cartItems[$id]);
+        $_SESSION['cart'] = $cartItems;
+    }
+
+    function getQuantity($id,$cart)
+    {
+        if(isset($cart[$id]))
+        {
+            return $cart[$id];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    function increaseCartQuantity($id)
+    {
+        $cartItems = $this->getShoppingCart();
+        $quantity = $this->getQuantity($id, $cartItems);
+        $newQuantity = $quantity;
+        $cartItems[$id] = $newQuantity;
+
+        $_SESSION['cart'] = $cartItems;
+    }
+
 }

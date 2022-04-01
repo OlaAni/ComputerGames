@@ -112,19 +112,36 @@ class User
         return $this->employee;
     }
 
+    function checkCred($email,$password)
+    {
+        $pdo = get_connections();
+        $query = 'SELECT * FROM user WHERE email = :emailVal AND password = :passwordVal';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam('emailVal', $email);
+
+        $stmt->bindParam('passwordVal', $password);
+
+        $stmt->execute();
+
+
+        return $stmt->fetch();
+    }
+
+
     public function Login(): void
     {
         //Login in User if statement for admin and customer
         if($this->getEmployee()=="true")
         {
             session_start();
-
+            $_SESSION["employee"] = $this->getEmployee();
             header("Location: adminpage.php");
 
         }
         else
         {
             session_start();
+            $_SESSION["employee"] = $this->getEmployee();
 
             header("Location: index.php");
 

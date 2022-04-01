@@ -1,4 +1,4 @@
-<?php require 'templates/adminHeader.php';  ?>
+<?php require 'templates/headerlogged.php';  ?>
 <?php
 
 

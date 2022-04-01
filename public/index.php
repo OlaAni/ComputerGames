@@ -21,11 +21,12 @@ for($i=1;$i<=3;$i++)
 //killSession();
 //print session_id();
 
-
+var_dump($_SESSION["employee"]);
 
 ?>
 
-<?php require 'templates/headerlogged.php';  ?>
+<?php
+require 'templates/headerlogged.php';  ?>
 
 <div class="container">
         <div class="row">

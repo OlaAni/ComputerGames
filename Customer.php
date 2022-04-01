@@ -73,8 +73,27 @@ class Customer extends User
 
     function Register():void
     {
-        //echo $_POST['name'];
-        set_user();
+        $pdo = get_connections();
+        if (isset($_POST['submit'])) {
+            try {
+                $new_user = array(
+                    "name" => $_POST['name'],
+                    "email" => $_POST['email'],
+                    "password" => $_POST['password'],
+                    "location" => $_POST['location'],
+                    "favgenre" => 'Blank',
+                    "tradeamo" => 0,
+                    "employee"=>'false',
+                );
+                $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
+            values (:". implode(', :', array_keys($new_user)).")";
+
+                $statement = $pdo->prepare($sql);
+                $statement->execute($new_user);
+            } catch(PDOException $error) {
+                echo $sql . "<br>" . $error->getMessage();
+            }
+        }
         header("Location: loginpage.php");
     }
 

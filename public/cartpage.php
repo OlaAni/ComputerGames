@@ -1,14 +1,15 @@
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
-require '../src/functions.php';
+//require '../src/functions.php';
 require '../Test/autoload.php';
 $products = array();
 foreach($_SESSION['cart'] as $key=>$value)
 {
     $prod = new Product($value);
-
+    //$prod->showDetails();
     array_push($products,$prod);
+    $products[$key]->showDetails();
 
 
     ?>
@@ -17,7 +18,7 @@ foreach($_SESSION['cart'] as $key=>$value)
     </form>
     <?php
 }
-
+var_dump($_SESSION['cart']);
 
 $cart = new Cart();
 $cart->setProducts($products);
