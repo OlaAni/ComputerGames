@@ -1,9 +1,9 @@
 <?php
 require_once "../autoload.php";
 
-$game4 = new Game(1,"",50," "," ");
-$game2 = new Game(2,"",100,"Action","");
-$part1 = new Part(3," ",0,"","");
+$game4 = new Game(1);
+$game2 = new Game(2);
+$part1 = new Part(3);
 
 
 //$game1->showDetails();
@@ -14,7 +14,7 @@ $game4->showDetails();
 $game2->showDetails();
 $part1->showDetails();
 
-$customer1 = new Customer("Ola","ola@gmail.com","password",18);
+$customer1 = new Customer(1);
 $cart = new Cart();
 $arr = array($game4,$game2,$part1);
 $cart->setProducts($arr);
