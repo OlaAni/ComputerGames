@@ -37,8 +37,12 @@ if (isset($_POST['submit'])) {
 
 <form method="post">
 
-    <label for="name">Trade In</label>
+    <label for="name">Trade In Type:</label>
     <input type="text" name="tradeamo" id="tradeamo">
+    <label for="name">Trade In Name:</label>
+    <input type="text" name="tradeName" id="tradeName">
+    <label for="name">Expected Value:</label>
+    <input type="text" name="tradeValue" id="tradeValue">
     <input type="submit" name="submit" value="Submit">
 </form>
 <?php require 'templates/footer.php';?>
