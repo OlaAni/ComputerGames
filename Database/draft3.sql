@@ -31,15 +31,16 @@ CREATE TABLE IF NOT EXISTS `product` (
   `rarity` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'BLANK',
   `type` int DEFAULT '1',
   PRIMARY KEY (`idProduct`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table comp_games.product: ~4 rows (approximately)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`, `type`) VALUES
-	(1, 'DogWatch', 200, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
-	(2, 'ATG5', 100, 'Adventure', '0', 'ATG5.png', 'Adventure Game', 'VERY', 1),
-	(3, 'AMD5', 100, '0', 'CPU', 'AMD5.png', 'AMD 5', 'VERY', 0),
-	(4, 'Test1', 30, 'Test', 'BLANK', 'Test.png', 'Test', 'Test', 1);
+	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
+	(2, 'ATG5', 40, 'Adventure', '0', 'ATG5.png', 'Adventure Game', 'VERY', 1),
+	(3, 'AMD5', 105, '0', 'CPU', 'AMD5.png', 'AMD 5', 'VERY', 0),
+	(4, 'CrossingAnimals', 30, 'StoryTelling', '0', 'CrossingAnimals.png', 'StoryTelling game', 'COMMON', 1),
+	(5, 'RTX 3090', 1000, '0', 'GPU', 'RTX3090.png', 'RTX3090', 'BLANK', 0);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.sale
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `sale` (
   CONSTRAINT `fk_Cart_Admin` FOREIGN KEY (`Admin_idCustomer`) REFERENCES `admin` (`idAdmin`),
   CONSTRAINT `fk_Cart_Customer` FOREIGN KEY (`Customer_idCustomer`) REFERENCES `customer` (`idCustomer`),
   CONSTRAINT `fk_Cart_Tradein` FOREIGN KEY (`Tradein_idTradein`) REFERENCES `tradein` (`idTrade`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table comp_games.sale: ~9 rows (approximately)
 /*!40000 ALTER TABLE `sale` DISABLE KEYS */;
@@ -74,7 +75,8 @@ INSERT INTO `sale` (`idSale`, `fullPrice`, `CustomerID`, `Customer_idCustomer`, 
 	(10, 400, 1, NULL, NULL, NULL, NULL),
 	(11, 400, 1, NULL, NULL, NULL, NULL),
 	(12, 500, 1, NULL, NULL, NULL, NULL),
-	(13, 188, 1, NULL, NULL, NULL, NULL);
+	(13, 188, 1, NULL, NULL, NULL, NULL),
+	(14, 564, 1, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `sale` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.trade
@@ -112,18 +114,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `employee` varchar(50) DEFAULT 'false',
   `location` varchar(100) DEFAULT 'NOWHERE',
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.user: ~7 rows (approximately)
+-- Dumping data for table comp_games.user: ~8 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `age`, `favgenre`, `tradeamo`, `employee`, `location`) VALUES
 	(0, '0', '0', '0', 0, 'Set', 0, 'false', 'NOWHERE'),
 	(1, 'Olamide', 'ola@gmail.com', 'pass', 18, 'Action', 0.53, 'false', 'NOWHERE'),
 	(2, 'Test', 'test@gmail.com', 'pass', 8, 'Adventure', 0, 'false', 'NOWHERE'),
-	(4, 'ADMINOla', 'adminola@gmail.com', 'pass', 0, 'Set', 0, 'true', 'NOWHERE'),
-	(5, 'Ola', 'ola@gmial.com', 'pass', 0, 'Blank', 0, 'false', 'NOWHERE'),
-	(6, 'Ola', 'test2@gmail.com', 'pass', 0, 'Blank', 0, 'false', 'TUD'),
-	(7, 'MyName', 'myemail@gmail', 'pass', 0, 'Blank', 0, 'false', 'TUD');
+	(5, 'Ola', 'ola@gmial.com', 'pass', 12, 'Blank', 0, 'false', 'NOWHERE'),
+	(6, 'Ola', 'test2@gmail.com', 'pass', 33, 'Blank', 0, 'false', 'TUD'),
+	(7, 'MyName', 'myemail@gmail', 'pass', 32, 'Blank', 0, 'false', 'TUD'),
+	(104, 'ADMINOla', 'adminola@gmail.com', 'pass', 0, 'Set', 0, 'true', 'NOWHERE'),
+	(108, 'ADMINThomas', 'thomas@gmail.com', 'pass', 0, 'Set', 0, 'true', 'NOWHERE');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
