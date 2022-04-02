@@ -38,30 +38,26 @@ session_start()?>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="gameTab.php">Games</a></li>
-                        <li><a href="partTab.php">Parts</a></li>
-                    </ul>
-                </li>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                        <a href="gameTab.php">Games</a>
+                        <a href="partTab.php">Parts</a>
+                    </div>
+                </div>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="tradein.php">Trade</a></li>
 
             </ul>
+
+            <form action="search.php" method="post"  class="navbar-form navbar-right">
+                <input type="text" id="search" name="search">
+                <input type="submit" name="submit" value="View Results">
+            </form>
             <?php if($_SESSION["employee"]=="false") {?>
 
 
-                <form action="search.php" method="post"  class="navbar-form navbar-right">
-                    <input type="text" id="search" name="search">
-                    <input type="submit" name="submit" value="View Results">
-                </form>
 
-                <?php
-
-                //$user0 = new User(0);
-                //$user0->Search();
-                ?>
 
             <form action="logout.php" method="post" class="navbar-form navbar-right">
                 <button name="Submit" value="Logout" class="button" type="submit">Log out</button>

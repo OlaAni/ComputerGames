@@ -4,7 +4,7 @@ require_once '../autoload.php';
 
 
 $test = array();
-for($i=1;$i<=3;$i++)
+for($i=1;$i<=5;$i++)
 {
     $prod = new Product($i);
     if($prod->getType()==1)

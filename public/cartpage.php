@@ -39,12 +39,12 @@ foreach($cartItems as $id => $quantity):
             <?= $product->getDescription() ?>
         </td>
         <td>
-            $ <?= $price ?>
+            € <?= $price ?>
         </td>
         <td>
             <form action="/?action=changeCartQuantity&id=<?= $id ?>"
                   method="post">
-                 <button type="submit" name="amount" value="reduce"
+                <button type="submit" name="amount" value="reduce"
                           class="btn btn-primary btn-sm">
                     <span class="glyphicon glyphicon-minus"></span>
                 </button>
@@ -56,7 +56,7 @@ foreach($cartItems as $id => $quantity):
             </form>
         </td>
         <td>
-            $ <?= $subtotal ?>
+            € <?= $subtotal ?>
         </td>
         <td>
             <form action="/?action=removeFromCart&id=<?= $id ?>"
@@ -89,6 +89,7 @@ foreach($cartItems as $id => $quantity):
 if (isset($_POST['submit'])) {
     $sale->Submit($newTotal);
 }
+
 ?>
 <form method="post">
     <input type="submit" name="submit" value="Submit">

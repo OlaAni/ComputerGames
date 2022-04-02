@@ -98,6 +98,7 @@ function displayCart()
     {
         require_once __DIR__.'/../public/cartpage.php';
     }
+
 }
 
 //function get_products($limit = null)

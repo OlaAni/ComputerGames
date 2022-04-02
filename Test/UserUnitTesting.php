@@ -3,8 +3,7 @@ require_once "../autoload.php";
 
 
 
-$customer = new Customer(2);
-$customer->setFavGenre("Action");
+$customer = new Customer(5);
 $customer->showDetails();
 
 
