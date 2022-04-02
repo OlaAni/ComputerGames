@@ -7,7 +7,7 @@ class  Admin extends User
         parent::__construct($id);
     }
 
-    function updateProduct():void
+    function editProduct():void
     {
 
     }

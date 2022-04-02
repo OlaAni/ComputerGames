@@ -16,17 +16,9 @@ if (isset($_POST['submit'])) {
             "rarity" => $_POST['rarity'],
             "type" => $_POST['type']
         ];
-        $sql = "UPDATE product
- SET idProduct = :idProduct,
- name = :name,
- price = :price,
- genre = :genre,
- part = :part,
- image = :image,
- description = :description,
- rarity = :rarity,
- type = :type
- WHERE idProduct = :idProduct";
+        $sql = "UPDATE product SET idProduct = :idProduct, name = :name, price = :price, 
+                   genre = :genre, part = :part, image = :image,
+                   description = :description, rarity = :rarity, type = :type WHERE idProduct = :idProduct";
         $pdo = get_connections();
         $statement = $pdo->prepare($sql);
         $statement->execute($product);
@@ -34,7 +26,6 @@ if (isset($_POST['submit'])) {
         echo $sql . "<br>" . $error->getMessage();
     }
 }
-var_dump($_GET['idProduct']);
 
 if (isset($_GET['idProduct'])) {
     try {
