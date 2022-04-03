@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * extends products
+ */
 class Part extends Product
 {
     public string $PartType;

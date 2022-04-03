@@ -9,6 +9,9 @@ class User
     private int $id;
 
 
+    /**
+     * @param $id
+     */
     public function __construct($id)
     {
         $this->setId($id);
@@ -114,6 +117,12 @@ class User
         return $this->employee;
     }
 
+    /**
+     * @param $email
+     * @param $password
+     * @return mixed
+     * checks credentials for the user
+     */
     function checkCred($email, $password)
     {
         $pdo = get_connections();
@@ -130,6 +139,10 @@ class User
     }
 
 
+    /**
+     * login if admin is true heads to adminpage
+     * if admin is false heads to index
+     */
     public function Login(): void
     {
         //Login in User if statement for admin and customer
@@ -158,6 +171,9 @@ class User
 
     }
 
+    /**
+     * returns search and returns product or no product
+     */
     public function Search()
     {
 
@@ -171,17 +187,6 @@ class User
             $stmt->execute();
 
             $result = $stmt->fetch();
-            /*try {
-                $sql = "SELECT * FROM product WHERE name = :name";
-                $name = $_POST['search'];
-
-                $statement = $pdo->prepare($sql);
-                $statement->bindParam(':name', $name, PDO::PARAM_STR);
-                $statement->execute();
-                $result = $statement->fetchAll();
-            } catch (PDOException $error) {
-                echo $sql . "<br>" . $error->getMessage();
-            }*/
         }
 
         if (isset($_POST['submit']))

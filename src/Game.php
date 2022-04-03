@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * extends products
+ */
 class Game extends Product
 {
     public string $genre;

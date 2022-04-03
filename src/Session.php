@@ -1,6 +1,9 @@
 <?php
 class session
 {
+    /**
+     * kills session
+     */
     public function killSession()
     {
         $_SESSION = [];

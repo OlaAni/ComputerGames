@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * class product makes a product object
+ * getters and setterw
+ */
 require_once "functions.php";
 class Product
 {
@@ -41,6 +44,10 @@ class Product
         $this->setType();
     }
 
+    /**
+     * @return mixed
+     * gets all product attributes from database
+     */
     public function getProduct()
     {
         $pdo = get_connections();

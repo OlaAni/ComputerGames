@@ -4,6 +4,7 @@ require_once "functions.php";
 /**
  * Extends User
  * Controls register and customer object
+ * getter and setters
  */
 class Customer extends User
 {
@@ -77,7 +78,7 @@ class Customer extends User
     }
 
     /**
-     * writes to the database
+     * writes to the database and checks if email is already in use
      */
     function Register():void
     {

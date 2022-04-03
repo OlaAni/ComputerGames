@@ -22,6 +22,11 @@ class  Sale
        $this->cart->setProductNames();
     }
 
+    /**
+     * @param $price
+     * @return mixed
+     * submits price and customerid to the database
+     */
     function Submit($price): mixed
     {
         $pdo = get_connections();

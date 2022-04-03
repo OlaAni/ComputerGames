@@ -33,7 +33,7 @@ require_once "../autoload.php";
     $check = checkIfUserExists($_POST['email']);
     if ($check) {
         echo '<script>alert("EMAIL IS IN USE")</script>';
-        
+
     }
 
 } ?>

@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * returns trade
+ */
 class Trade
 {
     private float $discount;
