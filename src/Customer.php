@@ -85,7 +85,7 @@ class Customer extends User
         if (isset($_POST['submit'])) {
             $check = checkIfUserExists($_POST['email']);
             if ($check) {
-                echo "Email in Use";
+                echo "EMAIL IS NOT IN USE";
             } else {
                 try {
                     $new_user = array(
@@ -105,8 +105,9 @@ class Customer extends User
                 } catch (PDOException $error) {
                     echo $sql . "<br>" . $error->getMessage();
                 }
+                header("Location: loginpage.php");
+
             }
-            header("Location: loginpage.php");
         }
     }
 
