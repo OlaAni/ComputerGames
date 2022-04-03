@@ -1,9 +1,12 @@
 <?php
+
+/**
+ * Class cart,calculates fullprice and sets trade amounts and return the name of the products
+ */
 class Cart
 {
     private float $fullPrice = 0;
     private $products = array();
-    private $qauntity = 0;
     private Customer $customer;
 
     /**

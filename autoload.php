@@ -1,4 +1,5 @@
 <?php
+/*autoload the functions and classes*/
 require_once "src/functions.php";
 require_once "src/User.php";
 require_once "src/Cart.php";

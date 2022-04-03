@@ -32,6 +32,16 @@ function checkCred($email,$password)
     return $stmt->fetch();
 }
 
+function checkIfUserExists($email)
+{
+    $pdo = get_connections();
+    $query = 'SELECT * FROM user WHERE email = :emailVal';
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam('emailVal', $email);
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
 function getShoppingCart()
 {
     // default is empty shopping cart array

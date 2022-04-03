@@ -5,11 +5,6 @@ $game4 = new Game(1);
 $game2 = new Game(2);
 $part1 = new Part(3);
 
-
-//$game1->showDetails();
-//$game2->showDetails();
-//$part1->showDetails();
-
 $game4->showDetails();
 $game2->showDetails();
 $part1->showDetails();
@@ -30,27 +25,7 @@ $sale = new Sale();
 $sale->setCustomer($customer1);
 $sale->setCart($cart);
 $sale->showCartDetails();
-/*
-$customer1 = new Customer("Ola","ola@gmail.com","password",18);
-$cart = new Cart();
-$arr = array($game1,$game2,$part1);
-$cart->setProducts($arr);
-$cart->calcFullPrice();
-print "Full price is ".$cart->getFullPrice()."</br>";
 
-$trade1 = new Trade();
-$cart->setTrade($trade1);
-//$trade1->calDiscount(RarityType::COMMON);
-$cart->setNewPrice($cart->getFullPrice());
-
-echo "</br></br> The discount is ".$trade1->getDiscount(). "</br>Your new price is ".$cart->getFullPrice()."</br>" ;
-
-
-
-$sale = new Sale();
-$sale->setCustomer($customer1);
-$sale->setCart($cart);
-$sale->showCartDetails();*/
 
 
 

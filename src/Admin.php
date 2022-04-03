@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin class, creates admin object
+*/
 class  Admin extends User
 {
 
@@ -7,6 +10,9 @@ class  Admin extends User
         parent::__construct($id);
     }
 
+    /**
+     * Implement edit product logic tp run from class
+     */
     function editProduct():void
     {
 

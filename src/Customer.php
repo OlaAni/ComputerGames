@@ -1,5 +1,10 @@
 <?php
 require_once "functions.php";
+
+/**
+ * Extends User
+ * Controls register and customer object
+ */
 class Customer extends User
 {
     private String $favGenre;
@@ -71,30 +76,38 @@ class Customer extends User
 
     }
 
+    /**
+     * writes to the database
+     */
     function Register():void
     {
         $pdo = get_connections();
         if (isset($_POST['submit'])) {
-            try {
-                $new_user = array(
-                    "name" => $_POST['name'],
-                    "email" => $_POST['email'],
-                    "password" => $_POST['password'],
-                    "location" => $_POST['location'],
-                    "favgenre" => 'Blank',
-                    "tradeamo" => 0,
-                    "employee"=>'false',
-                );
-                $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) .")
-            values (:". implode(', :', array_keys($new_user)).")";
+            $check = checkIfUserExists($_POST['email']);
+            if ($check) {
+                echo "Email in Use";
+            } else {
+                try {
+                    $new_user = array(
+                        "name" => $_POST['name'],
+                        "email" => $_POST['email'],
+                        "password" => $_POST['password'],
+                        "location" => $_POST['location'],
+                        "favgenre" => 'Blank',
+                        "tradeamo" => 0,
+                        "employee" => 'false',
+                    );
+                    $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) . ")
+            values (:" . implode(', :', array_keys($new_user)) . ")";
 
-                $statement = $pdo->prepare($sql);
-                $statement->execute($new_user);
-            } catch(PDOException $error) {
-                echo $sql . "<br>" . $error->getMessage();
+                    $statement = $pdo->prepare($sql);
+                    $statement->execute($new_user);
+                } catch (PDOException $error) {
+                    echo $sql . "<br>" . $error->getMessage();
+                }
             }
+            header("Location: loginpage.php");
         }
-        header("Location: loginpage.php");
     }
 
 
