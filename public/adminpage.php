@@ -16,7 +16,8 @@ try {
 
 require "../autoload.php";
 $test = array();
-for($i=1;$i<=4;$i++)
+$t = get_count();
+for($i=1;$i<=$t;$i++)
 {
     $prod = new Product($i);
     array_push($test,$prod);
@@ -32,7 +33,7 @@ for($i=1;$i<=4;$i++)
         <th>Price</th>
         <th>Genre/Part</th>
         <th>Image</th>
-        <th>Descrition</th>
+        <th>Description</th>
         <th>rarity</th>
         <th>type</th>
         <th>Edit</th>

@@ -17,6 +17,18 @@ function get_connections()
 
 
 
+function get_count()
+{
+    $pdo = get_connections();
+
+    $query = 'SELECT count(idProduct) as total FROM product';
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $count = $stmt->fetch();
+
+    return $count['total'];
+}
+
 function checkCred($email,$password)
 {
     $pdo = get_connections();
