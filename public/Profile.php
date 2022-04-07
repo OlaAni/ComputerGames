@@ -30,7 +30,7 @@ if($user->getEmployee()=="false"){
     <td><?php echo $user->getEmail();?></td>
     <td><?php echo $user->getAge();?></td>
     <td><?php echo $user->getFavGenre();?></td>
-    <td><a href="update-user.php?idName=<?php echo $user->getName();
+    <td><a href="update-user.php?idUser=<?php echo $user->getId();
         ?>">Edit</a></td>
 
     </tbody>

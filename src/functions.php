@@ -40,7 +40,6 @@ function checkCred($email,$password)
 
     $stmt->execute();
 
-
     return $stmt->fetch();
 }
 

@@ -12,14 +12,22 @@ if (isset($_POST['submit'])) {
 
 
     $user1 = checkCred($email, $password);
-    $user2 = $user1['idUser'];
+    if(!$user1)
+    {
+        echo "Wrong Credentials";
+    }
+    else
+    {
+        $user2 = $user1['idUser'];
 
-    $user = new User($user2);
-    $_SESSION['id'] = $user->getId();
-    $_SESSION['email'] = $user->getEmail();
-    $_SESSION['password'] = $user->getPassword();
-    $_SESSION['employee'] = $user->getEmployee();
-    $user->Login();
+        $user = new User($user2);
+        $_SESSION['id'] = $user->getId();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['password'] = $user->getPassword();
+        $_SESSION['employee'] = $user->getEmployee();
+        $user->Login();
+    }
+
 
 
 

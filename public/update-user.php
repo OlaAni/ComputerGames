@@ -5,20 +5,21 @@
 if (isset($_POST['submit'])) {
     try {
         require_once '../src/functions.php';
+        $pdo = get_connections();
+        $idUser = $_GET['idUser'];
+
         $user =[
             "name" => $_POST['name'],
-            "email" => $_POST['email'],
-            "password" => $_POST['password'],
-            "age" => $_POST['age'],
-            "favgenre" => $_POST['favegenre']
+            "favgenre" => $_POST['favgenre']
         ];
-        $sql = "UPDATE user SET name = :name, email = :email, password = :password, 
-                   age = :age, favgenre = :favgenre WHERE idUser = :idUser";
-        $pdo = get_connections();
+        $sql = "UPDATE user SET name = :name, favgenre = :favgenre WHERE idUser = ".$idUser;
+
         $statement = $pdo->prepare($sql);
         $statement->execute($user);
     } catch(PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage();
+        echo $sql . "<br>" . $error->getMessage(). "<br>";
+        echo "Something went wrong!";
+
     }
 }
 
@@ -27,23 +28,24 @@ if (isset($_GET['idUser'])) {
         require_once '../src/functions.php';
         $pdo = get_connections();
         $idUser = $_GET['idUser'];
-        $sql = "SELECT * FROM user WHERE idUser = :idUser";
+        $sql = "SELECT name,favgenre FROM user WHERE idUser = :idUser";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':idUser', $idUser);
         $statement->execute();
-        $product = $statement->fetch(PDO::FETCH_ASSOC);
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
     }
 }
 else {
-    echo "Something went wrong!";
+    echo "Something went wrong!lkn";
     exit;
 }
 ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
     <?php echo $_POST['name']; ?> successfully updated.
+
 <?php endif; ?>
 <h2>Edit Account:</h2>
 <form method="post">
