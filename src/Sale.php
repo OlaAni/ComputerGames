@@ -1,4 +1,5 @@
 <?php
+require_once "Product.php";
 class  Sale
 {
     private String $paymentDetails;
@@ -27,21 +28,27 @@ class  Sale
      * @return mixed
      * submits price and customerid to the database
      */
-    function Submit($price,$cartItems): mixed
+    function Submit($price): mixed
     {
         $pdo = get_connections();
-        //$query = 'INSERT INTO sale(fullPrice,Customer_idCustomer) VALUES (:price,:id)';
-        foreach($cartItems as $cartId => $quantity)
-        {
-            $query = 'INSERT INTO sale(fullPrice,Customer_idCustomer,Product_idProduct) VALUES (:price,:id,:cartId)';
-        }
-        $stmt = $pdo->prepare($query);
-        $id = $_SESSION["id"];
-        $stmt->bindParam(':cartId',$cartId);
-        $stmt->bindParam(':price',$price);
-        $stmt->bindParam(':id',$id);
-        $stmt->execute();
+        $cartItems = $_SESSION["cart"];
+        foreach($cartItems as $idt => $quantity){
+            $query = 'INSERT INTO sale(fullPrice,Customer_idCustomer,Product_idProduct,amount) VALUES (:price,:id,:cartId,:quantitiy)';
+            $stmt = $pdo->prepare($query);
+            $id = $_SESSION["id"];
 
+            $product = new Product($idt);
+            $c = $product->getId();
+
+            $stmt->bindParam(':cartId',$c);
+            $stmt->bindParam(':quantitiy',$quantity);
+            $stmt->bindParam(':price',$price);
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+
+        }
         return $stmt->fetch();
+
+
     }
 }

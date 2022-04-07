@@ -91,7 +91,7 @@ foreach($cartItems as $id => $quantity):
         Discount Total
 <?php
 if (isset($_POST['submit'])) {
-    $sale->Submit($newTotal,$cartItems);
+    $sale->Submit($newTotal);
 }
 
 ?>

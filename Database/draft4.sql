@@ -14,12 +14,10 @@
 
 
 -- Dumping database structure for comp_games
-DROP DATABASE IF EXISTS `comp_games`;
 CREATE DATABASE IF NOT EXISTS `comp_games` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `comp_games`;
 
 -- Dumping structure for table comp_games.product
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `idProduct` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -33,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`idProduct`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.product: ~5 rows (approximately)
+-- Dumping data for table comp_games.product: ~6 rows (approximately)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`, `type`) VALUES
 	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
@@ -45,43 +43,29 @@ INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.sale
-DROP TABLE IF EXISTS `sale`;
 CREATE TABLE IF NOT EXISTS `sale` (
   `idSale` int NOT NULL AUTO_INCREMENT,
   `fullPrice` float DEFAULT NULL,
-  `CustomerID` int DEFAULT NULL,
+  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Customer_idCustomer` int DEFAULT NULL,
   `Product_idProduct` int DEFAULT NULL,
-  `Admin_idCustomer` int DEFAULT NULL,
-  `Tradein_idTradein` int DEFAULT NULL,
-  PRIMARY KEY (`idSale`) USING BTREE,
-  KEY `fk_Cart_Customer` (`Customer_idCustomer`),
-  KEY `fk_Cart_Prodcut` (`Product_idProduct`),
-  KEY `fk_Cart_Admin` (`Admin_idCustomer`),
-  KEY `fk_Cart_Tradein` (`Tradein_idTradein`),
-  CONSTRAINT `fk_Cart_Admin` FOREIGN KEY (`Admin_idCustomer`) REFERENCES `admin` (`idAdmin`),
-  CONSTRAINT `fk_Cart_Customer` FOREIGN KEY (`Customer_idCustomer`) REFERENCES `customer` (`idCustomer`),
-  CONSTRAINT `fk_Cart_Tradein` FOREIGN KEY (`Tradein_idTradein`) REFERENCES `tradein` (`idTrade`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `amount` int DEFAULT NULL,
+  PRIMARY KEY (`idSale`),
+  KEY `FK_sale2_user` (`Customer_idCustomer`),
+  KEY `FK_sale_product` (`Product_idProduct`),
+  CONSTRAINT `FK_sale2_user` FOREIGN KEY (`Customer_idCustomer`) REFERENCES `user` (`idUser`),
+  CONSTRAINT `FK_sale_product` FOREIGN KEY (`Product_idProduct`) REFERENCES `product` (`idProduct`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.sale: ~10 rows (approximately)
+-- Dumping data for table comp_games.sale: ~3 rows (approximately)
 /*!40000 ALTER TABLE `sale` DISABLE KEYS */;
-INSERT INTO `sale` (`idSale`, `fullPrice`, `CustomerID`, `Customer_idCustomer`, `Product_idProduct`, `Admin_idCustomer`, `Tradein_idTradein`) VALUES
-	(1, 210, NULL, NULL, NULL, NULL, NULL),
-	(2, 160, NULL, NULL, NULL, NULL, NULL),
-	(3, 100, NULL, NULL, NULL, NULL, NULL),
-	(4, 0, NULL, NULL, NULL, NULL, NULL),
-	(5, 110, NULL, NULL, NULL, NULL, NULL),
-	(9, 100, 6, NULL, NULL, NULL, NULL),
-	(10, 400, 1, NULL, NULL, NULL, NULL),
-	(11, 400, 1, NULL, NULL, NULL, NULL),
-	(12, 500, 1, NULL, NULL, NULL, NULL),
-	(13, 188, 1, NULL, NULL, NULL, NULL),
-	(14, 564, 1, NULL, NULL, NULL, NULL);
+INSERT INTO `sale` (`idSale`, `fullPrice`, `date`, `Customer_idCustomer`, `Product_idProduct`, `amount`) VALUES
+	(2, 117.5, NULL, 101, 2, NULL),
+	(48, 47, '2022-04-07 12:44:21', 101, 1, 1),
+	(49, 47, '2022-04-07 12:44:21', 101, 6, 2);
 /*!40000 ALTER TABLE `sale` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.trade
-DROP TABLE IF EXISTS `trade`;
 CREATE TABLE IF NOT EXISTS `trade` (
   `idTrade` int NOT NULL AUTO_INCREMENT,
   `tradeamo` varchar(50) DEFAULT NULL,
@@ -103,7 +87,6 @@ INSERT INTO `trade` (`idTrade`, `tradeamo`, `tradeName`, `tradeValue`, `discount
 /*!40000 ALTER TABLE `trade` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `idUser` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',
@@ -115,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `employee` varchar(50) DEFAULT 'false',
   `location` varchar(100) DEFAULT 'NOWHERE',
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.user: ~8 rows (approximately)
+-- Dumping data for table comp_games.user: ~9 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `age`, `favgenre`, `tradeamo`, `employee`, `location`) VALUES
 	(0, '0', '0', '0', 0, 'Set', 0, 'false', 'NOWHERE'),
@@ -127,7 +110,8 @@ INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `age`, `favgenre`, `t
 	(102, 'Test', 'test@gmail.com', 'pass', 8, 'Adventure', 0, 'false', 'NOWHERE'),
 	(105, 'Ola', 'ola@gmial.com', 'pass', 12, 'Blank', 0, 'false', 'NOWHERE'),
 	(106, 'Ola', 'test2@gmail.com', 'pass', 33, 'Blank', 0, 'false', 'TUD'),
-	(107, 'MyName', 'myemail@gmail', 'pass', 32, 'Blank', 0, 'false', 'TUD');
+	(107, 'MyName', 'myemail@gmail', 'pass', 32, 'Blank', 0, 'false', 'TUD'),
+	(108, 'Test2', 'test2@gmail.com', 'pass', 101, 'Tycoon', 0.002, 'false', 'Blanch');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
