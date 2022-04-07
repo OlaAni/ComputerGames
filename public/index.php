@@ -46,8 +46,6 @@ require 'templates/headerlogged.php';  ?>
             <?php } ?>
 <?php
 
-
-session_start();
 //require_once __DIR__ . '/../../src/functions.php';
 // try to find "action" in query-string variables
 $action = filter_input(INPUT_GET, 'action');

@@ -10,21 +10,34 @@ $user = new User($_SESSION['id']);
 //var_dump($_SESSION['id']);
 
 ?>
-
-Name: <?php echo $user->getName(); ?> </br>
-Email: <?php echo $user->getEmail(); ?></br>
-
 <?php
 if($user->getEmployee()=="false"){
     $user = new Customer($_SESSION['id']);
-?>
-Discount: <?php echo $user->getDiscountAmount();?></br>
-Age: <?php echo $user->getAge();?></br>
-Genre: <?php echo $user->getFavGenre();?>
+    ?>
+    <h2>Update Account:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Email:</th>
+            <th>Age:</th>
+            <th>Genre:</th>
+        </tr>
+        </thead>
+    </table>
+    <tbody>
+    <td><?php echo $user->getName();?></td>
+    <td><?php echo $user->getEmail();?></td>
+    <td><?php echo $user->getAge();?></td>
+    <td><?php echo $user->getFavGenre();?></td>
+    <td><a href="update-user.php?idName=<?php echo $user->getName();
+        ?>">Edit</a></td>
 
-<form action="tradein.php" method="post" >
-    <button name="Submit" value="cart" class="button" type="submit">Trade In</button>
-</form>
+    </tbody>
+
+    <form action="tradein.php" method="post" >
+        <button name="Submit" value="cart" class="button" type="submit">Trade In</button>
+    </form>
 <?php }
 else{
     $user = new Admin($_SESSION['id']);?>
