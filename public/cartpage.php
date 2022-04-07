@@ -18,15 +18,16 @@ $sale = new Sale();
     <th>Subtotal</th>
     <th>Action</th>
 <?php
-
+/**
+ *accesses the session cart and displays each item and quantity ina foreach loop
+ * calculates the totals and subtotals
+ */
 $cartItems = $_SESSION["cart"];
 foreach($cartItems as $id => $quantity):
     $product = new Product($id);
     $price = $product->getPrice();
     $subtotal = $quantity * $price;
-    // update total
     $total += $subtotal;
-    // format prices to 2 d.p.
     $price = number_format($price, 2);
     $subtotal = number_format($subtotal, 2);
     ?> <tr>
@@ -71,6 +72,9 @@ foreach($cartItems as $id => $quantity):
 <?php endforeach; ?>
 </table>
         <?php
+        /**
+         * calls two cart methods to get discount and new price
+         */
         $cart->setCustomer($user);
         $cart->setNewPrice($total);
         $newTotal = $cart->getFullPrice();
@@ -87,7 +91,7 @@ foreach($cartItems as $id => $quantity):
         Discount Total
 <?php
 if (isset($_POST['submit'])) {
-    $sale->Submit($newTotal);
+    $sale->Submit($newTotal,$cartItems);
 }
 
 ?>

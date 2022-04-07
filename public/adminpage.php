@@ -1,7 +1,6 @@
 <?php require 'templates/headerlogged.php';  ?>
 <?php
 
-
 try {
     require "../src/functions.php";
     $pdo = get_connections();
@@ -15,6 +14,8 @@ try {
 }
 
 require "../autoload.php";
+$admin = new Admin($_SESSION['id']);
+
 $test = array();
 $t = get_count();
 for($i=1;$i<=$t;$i++)
@@ -69,4 +70,19 @@ for($i=1;$i<=$t;$i++)
     </tbody>
 </table>
 
+<!--<form method="post">-->
+<!--    <input type="number" value="idNum">-->
+<!--    <input type="submit" value="delSubmit">-->
+<!---->
+<!--</form>-->
+<?php
+//if(isset($_POST["delSubmit"]))
+//{
+//
+//    var_dump($_POST["idNum"]);
+//    $admin->deleteAccount($_POST["idNum"]);
+//
+//
+//}
+?>
 <?php require 'templates/footer.php';?>

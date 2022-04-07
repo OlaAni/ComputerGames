@@ -17,4 +17,15 @@ class  Admin extends User
     {
 
     }
+
+    function deleteAccount(int $i)
+    {
+        $pdo = get_connections();
+        $id = $i;
+        $sql = "DELETE FROM user WHERE idUser = :id";
+        $statement = $pdo->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+    }
 }

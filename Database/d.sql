@@ -1,1 +1,1 @@
-SELECT * FROM sale;customer
+SELECT  * FROM user;

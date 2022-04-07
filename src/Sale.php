@@ -27,12 +27,17 @@ class  Sale
      * @return mixed
      * submits price and customerid to the database
      */
-    function Submit($price): mixed
+    function Submit($price,$cartItems): mixed
     {
         $pdo = get_connections();
-        $query = 'INSERT INTO sale(fullPrice,CustomerID) VALUES (:price,:id)';
+        //$query = 'INSERT INTO sale(fullPrice,Customer_idCustomer) VALUES (:price,:id)';
+        foreach($cartItems as $cartId => $quantity)
+        {
+            $query = 'INSERT INTO sale(fullPrice,Customer_idCustomer,Product_idProduct) VALUES (:price,:id,:cartId)';
+        }
         $stmt = $pdo->prepare($query);
         $id = $_SESSION["id"];
+        $stmt->bindParam(':cartId',$cartId);
         $stmt->bindParam(':price',$price);
         $stmt->bindParam(':id',$id);
         $stmt->execute();
