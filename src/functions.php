@@ -2,7 +2,7 @@
 
 function get_connections()
 {
-    $config = require  'config.php';
+    $config = require 'config.php';
 
     $pdo = new PDO(
         $config['database_dsn'],
