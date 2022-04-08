@@ -73,10 +73,15 @@ for($i=1;$i<=$t;$i++)
 <form method="post">
     <input type="number" value="idNum" name="idNum">
     <input type="submit" name="SearchUser" value="SearchUser">
+    <input type="submit" name="delSubmit" value="delSubmit">
+
 
 </form>
+
 <?php
 $i = intval($_POST["idNum"]);
+var_dump($i);
+
 if(isset($_POST["SearchUser"]))
 {
     $user = new Customer($i);
@@ -97,20 +102,11 @@ if(isset($_POST["SearchUser"]))
     </tr>
     </tbody>
 </table>
-<form method="post">
-
-    <input type="submit" name="delSubmit" value="delSubmit">
-</form>
     <?php
+    //$admin->deleteAccount($user->getId());
 
 }
 
-if(isset($_POST["delSubmit"]))
-{
-    $user = new Customer($i);
-    $admin->deleteAccount($user->getId());
-
-}
 ?>
 
 
