@@ -103,6 +103,7 @@ if(isset($_POST["SearchUser"]))
     </tbody>
 </table>
     <?php
+    //Implement with button
     //$admin->deleteAccount($user->getId());
 
 }
