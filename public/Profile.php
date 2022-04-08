@@ -3,11 +3,15 @@ require '../autoload.php';
 
 ?>
 
-<?php require 'templates/headerlogged.php';  ?>
+<?php require 'templates/headerlogged.php';
+
+?>
+
+
 <?php
 
 $user = new User($_SESSION['id']);
-//var_dump($_SESSION['id']);
+
 
 ?>
 <?php
@@ -30,8 +34,7 @@ if($user->getEmployee()=="false"){
     <td><?php echo $user->getEmail();?></td>
     <td><?php echo $user->getAge();?></td>
     <td><?php echo $user->getFavGenre();?></td>
-    <td><a href="update-user.php?idUser=<?php echo $user->getId();
-        ?>">Edit</a></td>
+    <td><a href="update-user.php?idUser=<?php echo $user->getId(); ?>">Edit</a></td>
 
     </tbody>
 
@@ -41,6 +44,22 @@ if($user->getEmployee()=="false"){
 <?php }
 else{
     $user = new Admin($_SESSION['id']);?>
+    <table>
+        <thead>
+
+    <tr>
+        <th>Name:</th>
+        <th>Email:</th>
+        <th>Status:</th>
+    </tr>
+    </thead>
+    </table>
+    <tbody>
+    <td><?php echo $user->getName();?></td>
+    <td><?php echo $user->getEmail();?></td>
+    <td><?php echo $user->getEmployee();?></td>
+    </tbody>
+
 
     <form action="adminpage.php" method="post" >
         <button name="Submit" value="cart" class="button" type="submit">Edit</button>

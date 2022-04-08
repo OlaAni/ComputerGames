@@ -70,19 +70,49 @@ for($i=1;$i<=$t;$i++)
     </tbody>
 </table>
 
-<!--<form method="post">-->
-<!--    <input type="number" value="idNum">-->
-<!--    <input type="submit" value="delSubmit">-->
-<!---->
-<!--</form>-->
+<form method="post">
+    <input type="number" value="idNum" name="idNum">
+    <input type="submit" name="SearchUser" value="SearchUser">
+
+</form>
 <?php
-//if(isset($_POST["delSubmit"]))
-//{
-//
-//    var_dump($_POST["idNum"]);
-//    $admin->deleteAccount($_POST["idNum"]);
-//
-//
-//}
+$i = intval($_POST["idNum"]);
+if(isset($_POST["SearchUser"]))
+{
+    $user = new Customer($i);
+    var_dump($user);?>
+
+    <table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><?php echo $user->getId(); ?></td>
+        <td><?php echo $user->getEmail(); ?></td>
+
+    </tr>
+    </tbody>
+</table>
+<form method="post">
+
+    <input type="submit" name="delSubmit" value="delSubmit">
+</form>
+    <?php
+
+}
+
+if(isset($_POST["delSubmit"]))
+{
+    $user = new Customer($i);
+    $admin->deleteAccount($user->getId());
+
+}
 ?>
+
+
+
 <?php require 'templates/footer.php';?>

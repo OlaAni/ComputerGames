@@ -1,12 +1,14 @@
+<?php require_once '../autoload.php';?>
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
-
+$count = true;
+$customer = new Customer($_SESSION['id']);
 if (isset($_POST['submit'])) {
     try {
         require_once '../src/functions.php';
         $pdo = get_connections();
-        $idUser = $_GET['idUser'];
+        $idUser = $customer->getId();
 
         $user =[
             "name" => $_POST['name'],
@@ -27,7 +29,7 @@ if (isset($_GET['idUser'])) {
     try {
         require_once '../src/functions.php';
         $pdo = get_connections();
-        $idUser = $_GET['idUser'];
+        $idUser = $customer->getId();
         $sql = "SELECT name,favgenre FROM user WHERE idUser = :idUser";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':idUser', $idUser);
@@ -44,7 +46,20 @@ else {
 ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-    <?php echo $_POST['name']; ?> successfully updated.
+    <?php
+    if($count)
+    {
+        echo $_POST['name']; ?> successfully changed.<?php
+        $count=false;
+    }
+    elseif(!$count)
+    {
+        echo $_POST['name']; ?> successfully updated.<?php
+        $count=true;
+    }
+    var_dump($count);
+
+    ?>
 
 <?php endif; ?>
 <h2>Edit Account:</h2>

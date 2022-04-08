@@ -71,6 +71,7 @@ switch ($action) {
         } else {
             reduceCartQuantity($id);
         }
+
         displayCart();
         break;
     default:
