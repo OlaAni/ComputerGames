@@ -14,10 +14,12 @@
 
 
 -- Dumping database structure for comp_games
+DROP DATABASE IF EXISTS `comp_games`;
 CREATE DATABASE IF NOT EXISTS `comp_games` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `comp_games`;
 
 -- Dumping structure for table comp_games.product
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `idProduct` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -31,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`idProduct`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.product: ~6 rows (approximately)
+-- Dumping data for table comp_games.product: ~5 rows (approximately)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `description`, `rarity`, `type`) VALUES
 	(1, 'DogWatch', 50, 'Action', '0', 'DogWatch.png', 'Hacking Game', 'COMMON', 1),
@@ -43,6 +45,7 @@ INSERT INTO `product` (`idProduct`, `name`, `price`, `genre`, `part`, `image`, `
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.sale
+DROP TABLE IF EXISTS `sale`;
 CREATE TABLE IF NOT EXISTS `sale` (
   `idSale` int NOT NULL AUTO_INCREMENT,
   `fullPrice` float DEFAULT NULL,
@@ -57,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `sale` (
   CONSTRAINT `FK_sale_product` FOREIGN KEY (`Product_idProduct`) REFERENCES `product` (`idProduct`)
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table comp_games.sale: ~3 rows (approximately)
+-- Dumping data for table comp_games.sale: ~1 rows (approximately)
 /*!40000 ALTER TABLE `sale` DISABLE KEYS */;
 INSERT INTO `sale` (`idSale`, `fullPrice`, `date`, `Customer_idCustomer`, `Product_idProduct`, `amount`) VALUES
 	(2, 117.5, NULL, 101, 2, NULL),
@@ -66,6 +69,7 @@ INSERT INTO `sale` (`idSale`, `fullPrice`, `date`, `Customer_idCustomer`, `Produ
 /*!40000 ALTER TABLE `sale` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.trade
+DROP TABLE IF EXISTS `trade`;
 CREATE TABLE IF NOT EXISTS `trade` (
   `idTrade` int NOT NULL AUTO_INCREMENT,
   `tradeamo` varchar(50) DEFAULT NULL,
@@ -87,6 +91,7 @@ INSERT INTO `trade` (`idTrade`, `tradeamo`, `tradeName`, `tradeValue`, `discount
 /*!40000 ALTER TABLE `trade` ENABLE KEYS */;
 
 -- Dumping structure for table comp_games.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `idUser` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0',

@@ -104,7 +104,7 @@ if(isset($_POST["SearchUser"]))
 </table>
     <?php
     //Implement with button
-    //$admin->deleteAccount($user->getId());
+    $admin->deleteAccount($user->getId());
 
 }
 
