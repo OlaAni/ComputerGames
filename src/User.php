@@ -149,12 +149,13 @@ class User
         if ($this->getEmployee() == "true") {
             session_start();
             $_SESSION["employee"] = $this->getEmployee();
+            $_SESSION['Active'] = true;
             header("Location: adminpage.php");
 
         } else {
             session_start();
             $_SESSION["employee"] = $this->getEmployee();
-
+            $_SESSION['Active'] = true;
             header("Location: index.php");
 
         }

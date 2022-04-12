@@ -1,12 +1,10 @@
 <?php
-
 require_once "../autoload.php";
 
 
 
 if (isset($_POST['submit'])) {
 
-    session_start();
     $email = $_POST['email'];
     $password = $_POST['password'];
 
