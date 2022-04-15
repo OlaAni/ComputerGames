@@ -1,0 +1,1 @@
+{"version":1,"defects":{"UserTest::testGetName":3,"UserTest::testGetPassword":3,"UserTest::testGetId":5,"UserTest::testGetEmail":3,"UserTest::testGetEmployee":3},"times":{"UserTest::testGetId":0.012,"UserTest::testGetName":0.014,"UserTest::testGetPassword":0.012,"UserTest::testGetEmail":0.037,"UserTest::testGetEmployee":0.014}}
