@@ -1,17 +1,7 @@
 <?php require 'templates/headerlogged.php';  ?>
 <?php
+session_start();
 
-try {
-    require "../src/functions.php";
-    $pdo = get_connections();
-    $sql = "SELECT * FROM product";
-    $pdo = get_connections();
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    $result = $statement->fetchAll();
-} catch (PDOException $error) {
-    echo $sql . "<br>" . $error->getMessage();
-}
 
 require "../autoload.php";
 $admin = new Admin($_SESSION['id']);

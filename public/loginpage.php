@@ -1,3 +1,5 @@
+<?php require "templates/loginHeader.php"; ?>
+
 <?php
 require_once "../autoload.php";
 
@@ -22,7 +24,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['id'] = $user->getId();
         $_SESSION['email'] = $user->getEmail();
         $_SESSION['password'] = $user->getPassword();
-        $_SESSION['employee'] = $user->getEmployee();
         $user->Login();
     }
 
@@ -34,7 +35,6 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<?php require "templates/loginHeader.php"; ?>
 
 <form method="post">
     <label for="email">Email Address</label>

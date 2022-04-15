@@ -145,19 +145,17 @@ class User
      */
     public function Login(): void
     {
+        session_start();
+        $_SESSION["employee"] = $this->getEmployee();
+        $_SESSION['Active'] = true;
         //Login in User if statement for admin and customer
-        if ($this->getEmployee() == "true") {
-            session_start();
-            $_SESSION["employee"] = $this->getEmployee();
-            $_SESSION['Active'] = true;
+        if ($this->getEmployee() == "true")
+        {
             header("Location: adminpage.php");
-
-        } else {
-            session_start();
-            $_SESSION["employee"] = $this->getEmployee();
-            $_SESSION['Active'] = true;
+        }
+        else
+        {
             header("Location: index.php");
-
         }
     }
 
