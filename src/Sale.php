@@ -33,7 +33,7 @@ class  Sale
         $pdo = get_connections();
         $cartItems = $_SESSION["cart"];
         foreach($cartItems as $idt => $quantity){
-            $query = 'INSERT INTO sale(fullPrice,Customer_idCustomer,Product_idProduct,amount) VALUES (:price,:id,:cartId,:quantitiy)';
+            $query = 'INSERT INTO sale(fullPrice,Customer_idCustomer,Product_idProduct,amount) VALUES (:price,:id,:cartId,:quantity)';
             $stmt = $pdo->prepare($query);
             $id = $_SESSION["id"];
 
@@ -41,7 +41,7 @@ class  Sale
             $c = $product->getId();
 
             $stmt->bindParam(':cartId',$c);
-            $stmt->bindParam(':quantitiy',$quantity);
+            $stmt->bindParam(':quantity',$quantity);
             $stmt->bindParam(':price',$price);
             $stmt->bindParam(':id',$id);
             $stmt->execute();

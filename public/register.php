@@ -1,17 +1,7 @@
 <?php
 require_once "../autoload.php";
-
-
-
 ?>
 <?php include "templates/registerHeader.php"; ?>
-
-
-<?php if (isset($_POST['submit'])) {?>
-        <?php $user = new Customer(0);
-        $user->Register();
-} ?>
-
     <form method="post">
         <label for="name">First Name</label>
         <input type="text" name="name" id="name" required>
@@ -30,11 +20,25 @@ require_once "../autoload.php";
 
 
 <?php if (isset($_POST['submit'])) {
-    $check = checkIfUserExists($_POST['email']);
-    if ($check) {
-        echo '<script>alert("EMAIL IS IN USE")</script>';
+    $validEmail = validateEmail($_POST["email"]);
+    if($validEmail)
+    {
+        $check = checkIfUserExists($_POST['email']);
+        if ($check) {
+            echo '<script>alert("EMAIL IS IN USE")</script>';
+        }
+        else
+        {
+            $user = new Customer(0);
+            $user->Register();
+        }
+    }
+    else
+    {
+        echo '<script>alert("EMAIL SYNTAX WRONG")</script>';
 
     }
+
 
 } ?>
 <?php include "templates/footer.php"; ?>

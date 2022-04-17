@@ -90,7 +90,7 @@ class Customer extends User
             } else {
                 try {
                     $new_user = array(
-                        "name" => $_POST['name'],
+                        "name" => clean($_POST['name']),
                         "email" => $_POST['email'],
                         "password" => $_POST['password'],
                         "location" => $_POST['location'],

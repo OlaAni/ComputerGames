@@ -8,7 +8,7 @@ class ProductUnitTest extends TestCase
     public function testGetId()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getId(),"DogWatch");
+        $this->assertEquals($prod->getId(),1);
     }
 
 
@@ -22,30 +22,31 @@ class ProductUnitTest extends TestCase
     public function testGetImage()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getImage(),"DogWatch");
+        $this->assertEquals($prod->getImage(),"DogWatch.png");
     }
 
     public function testGetDescription()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getDescription(),"DogWatch");
+        $this->assertEquals($prod->getDescription(),"Hacking Game");
     }
 
     public function testGetPrice()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getPrice(),"DogWatch");
+        $this->assertEquals($prod->getPrice(),50);
     }
 
     public function testGetType()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getType(),"DogWatch");
+        $this->assertEquals($prod->getType(),1);
     }
 
     public function testGetRarity()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getRarity(),"DogWatch");
+        $this->assertEquals($prod->getRarity(),"VERY");
     }
+    
 }

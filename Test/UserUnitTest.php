@@ -5,7 +5,6 @@ use PHPUnit\Framework\TestCase;
 
 class UserUnitTest extends TestCase
 {
-
     public function testGetName()
     {
         $user = new User(101);
@@ -16,7 +15,7 @@ class UserUnitTest extends TestCase
     public function testGetPassword()
     {
         $user = new User(101);
-        $this->assertEquals($user->getPassword(),'password');
+        $this->assertEquals($user->getPassword(),'pass');
     }
 
     public function testGetId()
@@ -28,12 +27,12 @@ class UserUnitTest extends TestCase
     public function testGetEmail()
     {
         $user = new User(101);
-        $this->assertEquals($user->getEmail(),'ola');
+        $this->assertEquals($user->getEmail(),'ola@gmail.com');
     }
 
     public function testGetEmployee()
     {
         $user = new User(101);
-        $this->assertEquals($user->getEmployee(),1);
+        $this->assertEquals($user->getEmployee(),"false");
     }
 }

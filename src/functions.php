@@ -14,7 +14,22 @@ function get_connections()
     return $pdo;
 }
 
+function clean($data)
+{
+    $data = htmlspecialchars($data);
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
+}
 
+function validateEmail($email) {
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 
 function get_count()
