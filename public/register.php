@@ -15,14 +15,17 @@ require_once "../autoload.php";
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
             <label for="location">Location</label>
             <input type="text" placeholder="Enter Location" name="location" id="location">
-            <input type="submit" name="submit"  class="registerbtn" value="Submit" required>
+            <input type="submit" name="submit"  class="button" value="Submit" required>
             <hr>
         </div>
     </form>
 
-<form action="loginpage.php" method="post" class="navbar-form navbar-right">
-    <button name="login" value="login" class="registerbtn" type="submit">Login</button>
-</form>
+    <form action="loginpage.php" method="post" class="navbar-form navbar-right">
+        <button name="login" value="login" class="button" type="submit">Login</button>
+    </form>
+
+
+<?php include "templates/footer.php"; ?>
 
 
 <?php if (isset($_POST['submit'])) {
@@ -47,4 +50,4 @@ require_once "../autoload.php";
 
 
 } ?>
-<?php include "templates/footer.php"; ?>
+

@@ -82,3 +82,7 @@ td, th {
     padding: 10px;
     border-bottom: 1px solid #aaa;
 }
+
+footer {
+    text-align: center;
+}

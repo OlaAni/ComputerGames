@@ -37,11 +37,16 @@ if (isset($_POST['submit'])) {
 
 
 <form method="post">
+    <div class="container">
+    <p>Please login to your account.</p>
+    <hr>
     <label for="email">Email Address</label>
-    <input type="text" name="email" id="email" required>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" name="submit" value="Login">
+    <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    <input type="submit" name="submit" class="button" value="Login">
+    <hr>
+    </div>
 </form>
 <form action="register.php" method="post" class="navbar-form navbar-right">
     <button name="register" value="register" class="button" type="submit">Register</button>

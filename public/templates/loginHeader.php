@@ -14,7 +14,7 @@ session_start();
     <title>ComputerGames</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
