@@ -2,6 +2,7 @@
 body {
   padding-top: 50px;
   padding-bottom: 20px;
+    background-image: url('https://a1industrialtrucks.co.uk/wp-content/uploads/2018/11/webplunder-background-image-technology-online-website-solutions.jpg');
 }
 
 .pet-list-item blockquote {
@@ -85,4 +86,33 @@ td, th {
 
 footer {
     text-align: center;
+}
+
+#contacts {
+    text-align: center;
+    color: #953b39;
+    font-family: "Times New Roman", Times, serif;
+}
+.contactsInfo {
+    text-align: center;
+}
+
+.button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 4px 4px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.button:hover {
+    opacity: 1;
+}
+h1, h2, h3{
+    color: red;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }

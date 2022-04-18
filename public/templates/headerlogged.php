@@ -64,26 +64,26 @@ if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged i
 
 
             <form action="logout.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
+                <button name="Submit" value="Logout"  type="submit">Log out</button>
             </form>
             <form action="cartpage.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="cart" class="button" type="submit">Cart</button>
+                <button name="Submit" value="cart"  type="submit">Cart</button>
             </form>
 
             <form action="profile.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="profile" class="button" type="submit">Profile</button>
+                <button name="Submit" value="profile"  type="submit">Profile</button>
             </form>
             <?php }
             else if($_SESSION["employee"]=="true"){?>
             <form action="logout.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="Logout" class="button" type="submit">Log out</button>
+                <button name="Submit" value="Logout"  type="submit">Log out</button>
             </form>
             <form action="adminpage.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="admin" class="button" type="submit">AdminPage</button>
+                <button name="Submit" value="admin"  type="submit">AdminPage</button>
             </form>
 
             <form action="profile.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="profile" class="button" type="submit">Profile</button>
+                <button name="Submit" value="profile"  type="submit">Profile</button>
             </form>
             <?php }?>
 

@@ -14,7 +14,6 @@ $product = new Game(1);
 <h1>Game of the Month</h1>
 <h2><?php echo $product->getName(); ?></h2>
 <h3><?php echo $product->getRarity(); ?></h3>
-<p>Trade in to get a percent off on your profile</p>
 <?php
 if (isset($_POST['submit'])) {
     $pdo = get_connections();
@@ -71,13 +70,17 @@ if (isset($_POST['submit'])) {
 
 
 <form method="post">
-
-    <label for="name">Trade In Type:</label>
-    <input type="text" name="tradeamo" id="tradeamo">
-    <label for="name">Trade In Name:</label>
-    <input type="text" name="tradeName" id="tradeName">
-    <label for="name">Expected Value:</label>
-    <input type="text" name="tradeValue" id="tradeValue">
-    <input type="submit" name="submit" value="Submit">
+    <div class="container">
+        <p>Please fill in this form to get a Discount of next purchase.</p>
+        <hr>
+        <label for="name">Trade In Type:</label>
+        <input type="text" placeholder="Enter Item Type" name="tradeamo" id="tradeamo">
+        <label for="name">Trade In Name:</label>
+        <input type="text" placeholder="Enter Item Name" name="tradeName" id="tradeName">
+        <label for="name">Expected Value:</label>
+        <input type="text" placeholder="Enter Expected Value" name="tradeValue" id="tradeValue">
+        <input type="submit" class="button" name="submit" value="Submit">
+        <hr>
+    </div>
 </form>
 <?php require 'templates/footer.php';?>

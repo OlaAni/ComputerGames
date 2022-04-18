@@ -1,5 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://a1industrialtrucks.co.uk/wp-content/uploads/2018/11/webplunder-background-image-technology-online-website-solutions.jpg');
 }
 
 * {
@@ -57,8 +58,13 @@ a {
 #registerTag {
     color: red;
     text-align: center;
+    font-family: "Times New Roman", Times, serif;
 }
 
 footer {
     text-align: center;
+}
+
+form {
+    padding-top: 80px;
 }
