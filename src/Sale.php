@@ -50,5 +50,6 @@ class  Sale
         return $stmt->fetch();
 
 
+
     }
 }

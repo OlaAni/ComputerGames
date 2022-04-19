@@ -1,6 +1,11 @@
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
+if (isset($_POST['submit'])) {
+header("Location: saleSubmitted.php");
+
+}?>
+<?php
 require "../src/functions.php";
 require '../autoload.php';
 
@@ -92,6 +97,8 @@ foreach($cartItems as $id => $quantity):
 <?php
 if (isset($_POST['submit'])) {
     $sale->Submit($newTotal);
+    header("Location: saleSubmitted.php");
+
 }
 
 ?>
