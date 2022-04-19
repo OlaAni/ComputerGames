@@ -13,7 +13,7 @@ $product =  new Product($id);
 
 ?>
 
-<h1><?php echo $product->getName(); ?></h1>
+<h1 class="productName"><?php echo $product->getName(); ?></h1>
 
 <?php
 if($product->getType()==1)
@@ -26,23 +26,23 @@ if($product->getType()==1)
             <img src="/images/<?php echo $product->getImage(); ?>" class="pull-left img-rounded" />
         </div>
         <div class="col-xs-6">
-            <p>
+            <p class="gameInfo">
                 <?php echo  $product->getDescription(); ?>
             </p>
 
             <table class="table">
                 <tbody>
                 <tr>
-                    <th>Name</th>
-                    <td><?php echo $product->getName(); ?></td>
+                    <th class="gameInfo">Name</th>
+                    <td class="gameInfo" ><?php echo $product->getName(); ?></td>
                 </tr>
                 <tr>
-                    <th>Genre</th>
-                    <td><?php echo  $product->getGenre(); ?></td>
+                    <th class="gameInfo">Genre</th>
+                    <td class="gameInfo"><?php echo  $product->getGenre(); ?></td>
                 </tr>
                 <tr>
-                    <th>Price</th>
-                    <td>€<?php echo $product->getPrice(); ?></td>
+                    <th class="gameInfo">Price</th>
+                    <td class="gameInfo">€<?php echo $product->getPrice(); ?></td>
                 </tr>
                 </tbody>
             </table>

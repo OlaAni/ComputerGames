@@ -20,17 +20,9 @@ label{
     display: block;
 }
 
-#headerTag{
-    color: #953b39;
-}
-
 form{
     padding-top: 50px;
 
-}
-
-#registerTag{
-    color: red;
 }
 
 .small
@@ -89,12 +81,14 @@ footer {
 }
 
 #contacts {
+    color: #04AA6D;
+    font-family: "Fantasy", Fantasy, fantasy;
     text-align: center;
-    color: #953b39;
-    font-family: "Times New Roman", Times, serif;
 }
 .contactsInfo {
     text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: medium;
 }
 
 .button {
@@ -111,8 +105,52 @@ footer {
 .button:hover {
     opacity: 1;
 }
-h1, h2, h3{
-    color: red;
+
+.trade {
+    color: #04AA6D;
+    font-family: "Fantasy", Fantasy, fantasy;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+#contactImage {
+    width: 400px;
+    height: 200px;
+    padding-bottom: 20px;
+}
+
+.productName {
+    color: #04AA6D;
+    font-family: "Fantasy", Fantasy, fantasy;
+    text-align: center;
+}
+
+.gameInfo {
+    font-family: "Times New Roman", Times, serif;
+    font-size: medium;
+
+}
+
+.profile {
+    color: #04AA6D;
+    font-family: "Fantasy", Fantasy, fantasy;
+    text-align: center;
+}
+
+.profileInfo{
+    padding-left: 100px;
+}
+
+.profileButton {
+    background-color: #04AA6D;
+    color: white;
+    padding: 4px 4px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
+.profileButton:hover {
+    opacity: 1;
 }

@@ -17,7 +17,7 @@ require 'templates/headerlogged.php';  ?>
             <?php foreach ($test as $product) { ?>
     <div class="col-lg-4 pet-list-item">
                     <h2>
-                        <a href="show.php?id=<?php echo $product->getID()?>">
+                        <a class="productName" href="show.php?id=<?php echo $product->getID()?>">
                             <?php echo $product->getName(); ?></a>
                     </h2>
 
@@ -38,7 +38,7 @@ require 'templates/headerlogged.php';  ?>
                         <?php echo $product->getName(); ?>
                     </blockquote>
 
-                    <p>
+                    <p class="gameInfo">
                         <?php echo $product->getDescription(); ?>
                     </p>
 

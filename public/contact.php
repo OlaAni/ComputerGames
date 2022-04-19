@@ -9,7 +9,7 @@
     <div>
         <div class="contactsInfo">
             <h1 id="contacts">Contacts page</h1>
-            <img src="../images/contactUs.png" alt="Contact Image" width="200" height="200">
+            <img id="contactImage" src="../images/contactUs.png" alt="Contact Image">
             <p>For more information on our Products, Store or Trade-in feel free to contact us by one of the following: </p>
             <p>Phone Number: 01-823-5987</p>
             <p>Email: admin@computergames.com</p>

@@ -11,9 +11,9 @@ $user = new Customer($_SESSION['id']);
 $product = new Game(1);
 
 ?>
-<h1>Game of the Month</h1>
-<h2><?php echo $product->getName(); ?></h2>
-<h3><?php echo $product->getRarity(); ?></h3>
+<h1 class="trade">Game of the Month</h1>
+<h2 class="trade"><?php echo $product->getName(); ?></h2>
+<h3 class="trade"><?php echo $product->getRarity(); ?></h3>
 <?php
 if (isset($_POST['submit'])) {
     $pdo = get_connections();
