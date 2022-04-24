@@ -98,8 +98,7 @@ class Customer extends User
                         "tradeamo" => 0,
                         "employee" => 'false',
                     );
-                    $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) . ")
-            values (:" . implode(', :', array_keys($new_user)) . ")";
+                    $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) . ")  values (:" . implode(', :', array_keys($new_user)) . ")";
 
                     $statement = $pdo->prepare($sql);
                     $statement->execute($new_user);

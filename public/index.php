@@ -1,3 +1,5 @@
+<?php require 'templates/headerlogged.php';  ?>
+
 <?php
 require '../autoload.php';
 
@@ -8,9 +10,6 @@ for($i=1;$i<=3;$i++)
     array_push($test,$prod);
 }
 ?>
-
-<?php
-require 'templates/headerlogged.php';  ?>
 
 <div class="container">
         <div class="row">
