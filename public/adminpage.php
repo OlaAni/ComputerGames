@@ -1,6 +1,6 @@
 <?php require 'templates/headerlogged.php';  ?>
 <?php
-session_start();
+
 
 
 require "../autoload.php";
@@ -15,7 +15,7 @@ for($i=1;$i<=$t;$i++)
 }
 
 ?>
-<h2>Update Products</h2>
+<h2 class="productName">Update Products</h2>
 <table>
     <thead>
     <tr>

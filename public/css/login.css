@@ -68,3 +68,8 @@ footer {
 form {
     padding-top: 80px;
 }
+.failTag {
+    text-align: center;
+    color: #953b39;
+    font-family: "Fantasy", Fantasy, fantasy;
+}

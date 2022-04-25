@@ -154,3 +154,59 @@ footer {
 .profileButton:hover {
     opacity: 1;
 }
+
+.tradeForm {
+    padding: 16px;
+    background-color: white;
+}
+
+.formData{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.tradeButton {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.tradeButton:hover {
+    opacity: 1;
+}
+
+.confirmButton {
+    background-color: #04AA6D;
+    color: white;
+    padding: 4px 4px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+}
+
+.confirmButton:hover {
+    opacity: 1;
+}
+
+.buttonLog {
+    background-color: #04AA6D;
+    color: white;
+    padding: 4px 4px;
+    border: none;
+}

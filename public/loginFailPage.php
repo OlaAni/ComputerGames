@@ -38,19 +38,20 @@ if (isset($_POST['submit'])) {
 
 <form method="post">
     <div class="container">
-    <p>Please login to your account.</p>
-    <hr>
-    <label for="email">Email Address</label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required>
-    <input type="submit" name="submit" class="button" value="Login">
-    <hr>
+        <p>Please login to your account.</p>
+        <hr>
+        <label for="email">Email Address</label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <input type="submit" name="submit" class="button" value="Login">
+        <hr>
     </div>
 </form>
 <form action="register.php" method="post" class="navbar-form navbar-right">
     <button name="register" value="register" class="button" type="submit">Register</button>
 </form>
 
-<?php require 'templates/footer.php';?>
+<h3 class="failTag">Login Failed incorrect username or password. Try Again!</h3>
 
+<?php require 'templates/footer.php';?>

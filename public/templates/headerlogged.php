@@ -51,12 +51,15 @@ if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged i
                 </div>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="tradein.php">Trade</a></li>
+                <li><a href="Profile.php">Profile</a></li>
+                <li><a href="cartpage.php">Cart</a></li>
+
 
             </ul>
 
             <form action="search.php" method="post"  class="navbar-form navbar-right">
                 <input type="text" id="search" name="search">
-                <input type="submit" name="submit" value="View Results">
+                <input type="submit" name="submit" class="buttonLog" value="View Results">
             </form>
             <?php if($_SESSION["employee"]=="false") {?>
 
@@ -64,27 +67,18 @@ if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged i
 
 
             <form action="logout.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="Logout"  type="submit">Log out</button>
-            </form>
-            <form action="cartpage.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="cart"  type="submit">Cart</button>
+                <button name="Submit" value="Logout" class="buttonLog" type="submit">Log out</button>
             </form>
 
-            <form action="profile.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="profile"  type="submit">Profile</button>
-            </form>
             <?php }
             else if($_SESSION["employee"]=="true"){?>
             <form action="logout.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="Logout"  type="submit">Log out</button>
+                <button name="Submit" value="Logout" class="buttonLog" type="submit">Log out</button>
             </form>
             <form action="adminpage.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="admin"  type="submit">AdminPage</button>
+                <button name="Submit" value="admin" class="buttonLog" type="submit">AdminPage</button>
             </form>
 
-            <form action="profile.php" method="post" class="navbar-form navbar-right">
-                <button name="Submit" value="profile"  type="submit">Profile</button>
-            </form>
             <?php }?>
 
 

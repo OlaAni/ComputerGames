@@ -103,6 +103,6 @@ if (isset($_POST['submit'])) {
 
 ?>
 <form method="post">
-    <input type="submit" name="submit" value="Submit">
+    <input type="submit" class="confirmButton" name="submit" value="Submit">
 </form>
 

@@ -70,16 +70,16 @@ if (isset($_POST['submit'])) {
 
 
 <form method="post">
-    <div class="container">
+    <div class="tradeForm">
         <p>Please fill in this form to get a Discount of next purchase.</p>
         <hr>
         <label for="name">Trade In Type:</label>
-        <input type="text" placeholder="Enter Item Type" name="tradeamo" id="tradeamo">
+        <input type="text" class="formData" placeholder="Enter Item Type" name="tradeamo" id="tradeamo">
         <label for="name">Trade In Name:</label>
-        <input type="text" placeholder="Enter Item Name" name="tradeName" id="tradeName">
+        <input type="text" class="formData" placeholder="Enter Item Name" name="tradeName" id="tradeName">
         <label for="name">Expected Value:</label>
-        <input type="text" placeholder="Enter Expected Value" name="tradeValue" id="tradeValue">
-        <input type="submit" class="button" name="submit" value="Submit">
+        <input type="text" class="formData" placeholder="Enter Expected Value" name="tradeValue" id="tradeValue">
+        <input type="submit" class="tradeButton" name="submit" value="Submit">
         <hr>
     </div>
 </form>

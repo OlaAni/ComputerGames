@@ -88,7 +88,7 @@ else
 ?>
 
 <form action= "/?action=addToCart&id=<?=$product->getId()?>" method="post" class="form-signin">
-    <button>Add to Cart</button>
+    <button class="confirmButton">Add to Cart</button>
 </form>
 
 
