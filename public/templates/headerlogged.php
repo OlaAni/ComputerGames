@@ -43,7 +43,7 @@ if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged i
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
                 <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
+                    <button class="dropbtn">Tabs</button>
                     <div class="dropdown-content">
                         <a href="gameTab.php">Games</a>
                         <a href="partTab.php">Parts</a>

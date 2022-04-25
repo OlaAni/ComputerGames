@@ -38,7 +38,7 @@ class Trade
     {
         $this->discount = $discount;
     }
-    public function calDiscount(String $rarityType):void
+    public function calDiscount(String $rarityType):void//basis path add more
     {
         if ($rarityType == 'COMMON')
         {

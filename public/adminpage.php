@@ -94,8 +94,12 @@ if(isset($_POST["SearchUser"]))
 </table>
     <?php
     //Implement with button
-    $admin->deleteAccount($user->getId());
 
+}
+if(isset($_POST["delSubmit"]))
+{
+    $user = new Customer($i);
+    $admin->deleteAccount($user->getId());
 }
 
 ?>
