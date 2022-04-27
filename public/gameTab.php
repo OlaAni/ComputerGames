@@ -13,10 +13,11 @@ for($i=1;$i<=$t;$i++)
         $id = $prod->getId();
         $prod = new Game($id);
         array_push($test,$prod);
-    }}
+    }
+}
 
 
-
+    $test = array_reverse($test);
 ?>
 
 <?php require 'templates/headerlogged.php';  ?>
