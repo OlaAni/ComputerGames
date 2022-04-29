@@ -5,24 +5,7 @@
 $count = true;
 $customer = new Customer($_SESSION['id']);
 if (isset($_POST['submit'])) {
-    try {
-        require_once '../src/functions.php';
-        $pdo = get_connections();
-        $idUser = $customer->getId();
-
-        $user =[
-            "name" => $_POST['name'],
-            "favgenre" => $_POST['favgenre']
-        ];
-        $sql = "UPDATE user SET name = :name, favgenre = :favgenre WHERE idUser = ".$idUser;
-
-        $statement = $pdo->prepare($sql);
-        $statement->execute($user);
-    } catch(PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage(). "<br>";
-        echo "Something went wrong!";
-
-    }
+    $customer->updateUser();
 }
 
 if (isset($_GET['idUser'])) {
@@ -57,7 +40,6 @@ else {
         echo $_POST['name']; ?> successfully updated.<?php
         $count=true;
     }
-    var_dump($count);
 
     ?>
 

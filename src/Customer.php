@@ -87,32 +87,63 @@ class Customer extends User
             $check = checkIfUserExists($_POST['email']);
             if ($check) {
                 echo "EMAIL IS NOT IN USE";
-            } else {
-                try {
-                    $new_user = array(
-                        "name" => clean($_POST['name']),
-                        "email" => $_POST['email'],
-                        "password" => $_POST['password'],
-                        "location" => $_POST['location'],
-                        "favgenre" => 'Blank',
-                        "tradeamo" => 0,
-                        "employee" => 'false',
-                    );
-                    $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) . ")  values (:" . implode(', :', array_keys($new_user)) . ")";
-
-                    $statement = $pdo->prepare($sql);
-                    $statement->execute($new_user);
-                } catch (PDOException $error) {
-                    echo $sql . "<br>" . $error->getMessage();
+            }
+            else
+            {
+                if(strlen($_POST["password"])<3)
+                {
+                    //var_dump(strlen($_POST["password"]));
+                    echo 'PASSWORD TOO SHORT';
                 }
-                header("Location: loginpage.php");
+                else
+                {
+                    try {
+                        $new_user = array(
+                            "name" => clean($_POST['name']),
+                            "email" => clean($_POST['email']),
+                            "password" => clean($_POST['password']),
+                            "location" => clean($_POST['location']),
+                            "favgenre" => 'Blank',
+                            "tradeamo" => 0,
+                            "employee" => 'false',
+                        );
+                        $sql = "INSERT INTO user (" . implode(', ', array_keys($new_user)) . ")  values (:" . implode(', :', array_keys($new_user)) . ")";
 
+                        $statement = $pdo->prepare($sql);
+                        $statement->execute($new_user);
+                    } catch (PDOException $error) {
+                        echo $sql . "<br>" . $error->getMessage();
+                    }
+                    header("Location: loginpage.php");
+                }
             }
         }
     }
 
 
 
+    function updateUser()
+    {
+        if (isset($_POST['submit'])) {
+            try {
+                require_once '../src/functions.php';
+                $pdo = get_connections();
+                $idUser = $this->getId();
+
+                $user =[
+                    "name" => clean($_POST['name']),
+                    "favgenre" => clean($_POST['favgenre'])
+                ];
+                $sql = "UPDATE user SET name = :name, favgenre = :favgenre WHERE idUser = ".$idUser;
+
+                $statement = $pdo->prepare($sql);
+                $statement->execute($user);
+            } catch(PDOException $error) {
+                echo $sql . "<br>" . $error->getMessage(). "<br>";
+                echo "Something went wrong!";
+            }
+        }
+    }
     public function showDetails(): void
     {
         echo parent::showDetails()." Age is ".$this->age."Favourite Genre is ".$this->favGenre."</br>";
