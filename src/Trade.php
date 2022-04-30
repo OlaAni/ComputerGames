@@ -38,15 +38,23 @@ class Trade
     {
         $this->discount = $discount;
     }
-    public function calDiscount(String $rarityType):void//basis path add more
+    public function calDiscount(String $rarityType):void
     {
         if ($rarityType == 'COMMON')
         {
             $this->setDiscount(0.01);
         }
+        elseif($rarityType ==  'UNCOMMON')
+        {
+            $this->setDiscount(0.10);
+        }
         elseif($rarityType ==  'VERY')
         {
             $this->setDiscount(0.5);
+        }
+        elseif($rarityType ==  'ULTRA')
+        {
+            $this->setDiscount(0.75);
         }
         else
         {
