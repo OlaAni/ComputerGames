@@ -13,11 +13,13 @@ class Part extends Product
         $this->setPartType();
     }
 
+
     public function getPartType(): string
     {
         return $this->PartType;
     }
 
+    //gets part from database
     public function setPartType(): void
     {
         $part = $this->getProduct();

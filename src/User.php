@@ -180,7 +180,7 @@ class User
 
             $pdo = get_connections();
             $query = 'SELECT * FROM product WHERE name = :name';
-            $name = $_POST['search'];
+            $name = clean($_POST['search']);
             $stmt = $pdo->prepare($query);
             $stmt->bindParam('name', $name);
             $stmt->execute();
@@ -191,9 +191,8 @@ class User
         if (isset($_POST['submit']))
         {
             if ($result) {
-                $i = intval($result["idProduct"]);
+                $i = clean(intval($result["idProduct"]));
 
-                var_dump($result);
                 header('Location: show.php?id='.$i);
             }
             else

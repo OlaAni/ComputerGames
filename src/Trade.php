@@ -63,11 +63,4 @@ class Trade
 
 
     }
-
-
-
-    public function CheckProduct():void
-    {
-
-    }
 }

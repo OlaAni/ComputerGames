@@ -70,30 +70,33 @@ for($i=1;$i<=$t;$i++)
 
 <?php
 $i = intval($_POST["idNum"]);
-var_dump($i);
 
 if(isset($_POST["SearchUser"]))
 {
-    $user = new Customer($i);
-    var_dump($user);?>
+    $user = new Customer($i);?>
 
     <table>
     <thead>
     <tr>
         <th>#</th>
         <th>Email</th>
+        <th>Employee Status</th>
+        <th>Password</th>
+        <th>Discount Amount</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td><?php echo $user->getId(); ?></td>
         <td><?php echo $user->getEmail(); ?></td>
+        <td><?php echo $user->getEmployee(); ?></td>
+        <td><?php echo $user->getPassword(); ?></td>
+        <td><?php echo $user->getDiscountAmount(); ?></td>
 
     </tr>
     </tbody>
 </table>
     <?php
-    //Implement with button
 
 }
 if(isset($_POST["delSubmit"]))

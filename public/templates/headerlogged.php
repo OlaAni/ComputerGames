@@ -52,7 +52,9 @@ if($_SESSION['Active'] == false){ /* Redirects user to Login.php if not logged i
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="tradein.php">Trade</a></li>
                 <li><a href="Profile.php">Profile</a></li>
-                <li><a href="cartpage.php">Cart</a></li>
+                <?php if($_SESSION["employee"]=="false") {?>
+
+                <li><a href="cartpage.php">Cart</a></li><?php }?>
 
 
             </ul>

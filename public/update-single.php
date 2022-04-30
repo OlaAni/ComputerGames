@@ -1,37 +1,16 @@
+<?php require_once '../autoload.php';?>
 <?php require 'templates/headerlogged.php';  ?>
 
 <?php
-
+$admin = new Admin($_SESSION['id']);
 if (isset($_POST['submit'])) {
-    try {
-        require_once '../src/functions.php';
-        $product =[
-            "idProduct" => $_POST['idProduct'],
-            "name" => $_POST['name'],
-            "price" => $_POST['price'],
-            "genre" => $_POST['genre'],
-            "part" => $_POST['part'],
-            "image" => $_POST['image'],
-            "description" => $_POST['description'],
-            "rarity" => $_POST['rarity'],
-            "type" => $_POST['type']
-        ];
-        $sql = "UPDATE product SET idProduct = :idProduct, name = :name, price = :price, 
-                   genre = :genre, part = :part, image = :image,
-                   description = :description, rarity = :rarity, type = :type WHERE idProduct = :idProduct";
-        $pdo = get_connections();
-        $statement = $pdo->prepare($sql);
-        $statement->execute($product);
-    } catch(PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage();
-    }
+    $admin->editProduct();
 }
-
 if (isset($_GET['idProduct'])) {
     try {
         require_once '../src/functions.php';
         $pdo = get_connections();
-        $idProduct = $_GET['idProduct'];
+        $idProduct = clean($_GET['idProduct']);
         $sql = "SELECT * FROM product WHERE idProduct = :idProduct";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':idProduct', $idProduct);
@@ -42,7 +21,7 @@ if (isset($_GET['idProduct'])) {
     }
 }
 else {
-    echo "Something went wrong!tyty";
+    echo "Something went wrong!";
     exit;
 }
 ?>
