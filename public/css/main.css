@@ -30,7 +30,11 @@ form{
     width: 100px;
     height: 100px;
 }
-
+ .big
+ {
+     width: 300px;
+     height: 400px;
+ }
 
 .dropbtn {
     background-color: #999;
