@@ -46,7 +46,7 @@ class ProductUnitTest extends TestCase
     public function testGetRarity()
     {
         $prod = new Product(1);
-        $this->assertEquals($prod->getRarity(),"VERY");
+        $this->assertEquals($prod->getRarity(),"COMMON");
     }
     
 }
