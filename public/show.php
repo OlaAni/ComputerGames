@@ -23,7 +23,7 @@ if($product->getType()==1)
 <div class="container">
     <div class="row">
         <div class="col-xs-3 pet-list-item">
-            <img src="/images/<?php echo $product->getImage(); ?>" class="pull-left img-rounded" />
+            <img src="/images/<?php echo $product->getImage(); ?>" class="big" />
         </div>
         <div class="col-xs-6">
             <p class="gameInfo">

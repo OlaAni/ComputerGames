@@ -33,6 +33,3 @@ $sale->setCustomer($customer1);
 $sale->setCart($cart);
 $sale->showCartDetails();
 
-
-
-

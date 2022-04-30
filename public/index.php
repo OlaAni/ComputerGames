@@ -20,7 +20,8 @@ for($i=1;$i<=3;$i++)
                             <?php echo $product->getName(); ?></a>
                     </h2>
 
-                    <img src="/images/<?php echo $product->getImage(); ?>" class="big">
+        <a class="productName" href="show.php?id=<?php echo $product->getID()?>">
+            <img src="/images/<?php echo $product->getImage(); ?>" class="big"></a>
 
                     <blockquote class="game-details">
                         <span class="label label-info"><?php echo $product->getName(); ?></span>
