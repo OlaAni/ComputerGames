@@ -16,51 +16,8 @@ $product = new Game(1);
 <h3 class="trade"><?php echo $product->getRarity(); ?></h3>
 <?php
 if (isset($_POST['submit'])) {
-    $pdo = get_connections();
-    $query = 'SELECT * FROM product WHERE name = :name';
-    $name = $_POST['tradeName'];
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam('name', $name);
-    $stmt->execute();
-    $result = $stmt->fetch();
-    if($result) {
-        $i = intval($result["idProduct"]);
-        $prod = new Product($i);
-        $trade = new Trade();
-
-        try {
-            require_once '../src/functions.php';
-            $product = [
-
-                "tradeamo" => $_POST['tradeamo'],
-                "tradeName" => $_POST['tradeName'],
-                "tradeValue" => $_POST['tradeValue'],
-            ];
-            $sql = sprintf(
-                "INSERT INTO %s (%s) values (%s)",
-                "trade",
-                implode(", ", array_keys($product)),
-                ":" . implode(", :", array_keys($product))
-            );
-
-            $sql1 = 'UPDATE user SET tradeamo = :tradeamo where idUser = ' . $user->getId();
-            $trade->calDiscount($prod->getRarity());
-            $tradeamo = $trade->getDiscount() + $user->getDiscountAmount();
-            $statement1 = $pdo->prepare($sql1);
-            $statement1->bindValue(':tradeamo', $tradeamo);
-            $statement1->execute();
-
-
-            $statement = $pdo->prepare($sql);
-            $statement->execute($product);
-        } catch (PDOException $error) {
-            echo $sql . "<br>" . $error->getMessage();
-        }
-    }
-    else
-    {
-        echo "No Discount";
-    }
+    $trade = new Trade();
+    $trade->writeTrade();
 }
 
 ?>

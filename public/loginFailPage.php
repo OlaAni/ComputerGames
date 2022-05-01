@@ -7,8 +7,8 @@ require_once "../autoload.php";
 
 if (isset($_POST['submit'])) {
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = clean($_POST['email']);
+    $password =clean($_POST['password']);
 
 
     $user1 = checkCred($email, $password);

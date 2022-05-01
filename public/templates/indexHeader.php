@@ -48,6 +48,11 @@
 
 
             </ul>
+
+            <form action="search.php" method="post"  class="navbar-form navbar-right">
+                <input type="text" id="search" name="search">
+                <input type="submit" name="submit" class="buttonLog" value="View Results">
+            </form>
         </div>
 
 
