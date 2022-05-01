@@ -1,4 +1,4 @@
-<?php require 'templates/headerlogged.php';  ?>
+<?php require 'templates/indexHeader.php';  ?>
 
 <?php
 require '../autoload.php';

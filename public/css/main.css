@@ -214,3 +214,9 @@ hr {
     padding: 4px 4px;
     border: none;
 }
+
+.noProductTag {
+    text-align: center;
+    color: #953b39;
+    font-family: "Fantasy", Fantasy, fantasy;
+}
